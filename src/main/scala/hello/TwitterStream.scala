@@ -1,7 +1,12 @@
 package hello
 
+import java.util.Properties
+
+import kafka.consumer.{ConsumerConfig, Consumer}
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
+import akka.actor.{ActorSystem, ActorLogging, Actor, Props}
+import redis.RedisClient
 import twitter4j.conf.ConfigurationBuilder
 import twitter4j.TwitterStreamFactory
 import twitter4j.StatusListener
@@ -9,7 +14,7 @@ import twitter4j.Status
 import twitter4j.FilterQuery
 import twitter4j.StallWarning
 import twitter4j.StatusDeletionNotice
-import redis.RedisClient
+
 
 
 class TwitterStream {
@@ -45,26 +50,41 @@ class TwitterStream {
 
 object Main extends App {
 
-    implicit val akkaSystem = akka.actor.ActorSystem()
-    
-    val twitterStream = new TwitterStream()
-    val stream = twitterStream.stream
-    val kafkaconsumer = new KafkaConsumer()
+  implicit val akkaSystem = akka.actor.ActorSystem()
 
-    val sparkConf = new SparkConf().setAppName("StreamTest2").setMaster("spark://localhost:2181")
-    val ssc = new StreamingContext(sparkConf, Seconds(2))
+  val twitterStream = new TwitterStream()
+  val stream = twitterStream.stream
+  val topic = "teste"
 
-    val redis = RedisClient()
+  val redis = RedisClient()
 
-    //if (args.length < 1) {
-     // System.err.println("Topic: " +twitterStream.kproducer.kafkaTopic)
-    stream.addListener(new twitterStream.OnTweetPosted())
-    stream.sample()
-    kafkaconsumer.getData
-    // System.exit(1)
-   // }
-    
-    
+  val props = new Properties
+  props.put("group.id", "1")
+  props.put("auto.commit.interval.ms", "100")
+  props.put("auto.commit.enable.reset", "true")
+  props.put("zookeeper.connect", "localhost:2181")
+
+  val consumer = Consumer.create(new ConsumerConfig(props))
+  val topicMessageStreams = consumer.createMessageStreams(Map(topic -> 1))
+  val test = topicMessageStreams(topic)(0)
+
+  val kconsumer = akkaSystem.actorOf(Props(classOf[KafkaConsumer], redis, test), "kafkaconsumer")
+
+  //val sparkConf = new SparkConf().setAppName("StreamTest2").setMaster("spark://localhost:2181")
+  //val ssc = new StreamingContext(sparkConf, Seconds(2))
+
+  stream.addListener(new twitterStream.OnTweetPosted())
+  stream.sample()
+
+  kconsumer ! KConsumer
+
+  Thread.sleep(10000000)
+  akkaSystem.shutdown()
+
+
+ // val nick : String = readLine("User: ")
+ // println("Main: "+nick)
+
 
   
   

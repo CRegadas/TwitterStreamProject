@@ -1,59 +1,44 @@
 package hello
 
-import java.util.Properties
-import kafka.consumer.ConsumerConfig
-import kafka.consumer.Consumer
+import akka.actor.{ActorLogging, Actor}
+import kafka.consumer.{KafkaStream, ConsumerConfig, Consumer}
+import redis.RedisClient
 import scala.collection.Map
-import hello.Main.redis
+
+case object KConsumer
 
 
-
-class KafkaConsumer {
-
-  // private val logger = Logger.getLogger(getClass())
-
-  val topic = "teste"
-
-  val props = new Properties
-  props.put("group.id", "1")
-  props.put("auto.commit.interval.ms", "100")
-  props.put("auto.commit.enable.reset", "true")
-  props.put("zookeeper.connect", "localhost:2181")
-
-
-  val consumer = Consumer.create(new ConsumerConfig(props))
-  val topicMessageStreams = consumer.createMessageStreams(Map(topic -> 1))
-
-  val test = topicMessageStreams.get(topic).get
-
+class KafkaConsumer(redisClient: RedisClient, kafkaStream: KafkaStream[Array[Byte],Array[Byte]]) extends Actor with ActorLogging{
 
   // get tweets from kafka
   def getData = {
     println("teste")
-    for (stream <- test) {
-      for (message <- stream) {
-        val msg: Array[String] = new String(message.message, "UTF-8").split("=")
+      for (message <- kafkaStream) {
+        val msg: Array[String] = new String(message.message(), "UTF-8").split("=")
         println("testeee: "+ msg(0))
 
         // add info. para o redis
-        redis.sadd(msg(0),msg(1))
+        redisClient.sadd(msg(0),msg(1))
         Thread.sleep(2000)
-
       }
     }
+
+  def userTimeline(nick : String) = {
+    val userTweets = redisClient.get(nick)
+    println("timeline: "+nick)
+    //userTweets.foreach(println)
+
   }
 
-  def filterData = {
 
+//  def close(){
+//    consumer.shutdown()
+//  }
 
+  def receive = {
+    case KConsumer => log.info("waba waba!"); getData
+    case _      => self ! true
   }
-
-
-
-  def close(){
-    consumer.shutdown()
-  }
-
 
   //  def receiveFromKafka(n : Integer, topicMessageStreams: Map[String, List[KafkaStream[Array[Byte], Array[Byte]]]]) = {
   //    //var messages : List[Message] = Nil
