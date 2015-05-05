@@ -3,41 +3,38 @@ package hello
 import akka.actor.{ActorLogging, Actor}
 import kafka.consumer.{KafkaStream, ConsumerConfig, Consumer}
 import redis.RedisClient
-import scala.collection.Map
 
+//case class KConsumer(redisClient: RedisClient, kafkaStream: KafkaStream[Array[Byte],Array[Byte]])
 case object KConsumer
-
 
 class KafkaConsumer(redisClient: RedisClient, kafkaStream: KafkaStream[Array[Byte],Array[Byte]]) extends Actor with ActorLogging{
 
-  // get tweets from kafka
-  def getData = {
-    println("teste")
+  def receive = {
+
+    // get tweets from kafka
+    //case KConsumer(redisClient, kafkaStream) => {
+    case KConsumer => {
+
       for (message <- kafkaStream) {
         val msg: Array[String] = new String(message.message(), "UTF-8").split("=")
-        println("testeee: "+ msg(0))
+        println("Nick: "+ msg(0))
 
-        // add info. para o redis
+        // add info. para o redis(vai ser deslocado para outro sitio)
         redisClient.sadd(msg(0),msg(1))
         Thread.sleep(2000)
-      }
-    }
 
-  def userTimeline(nick : String) = {
-    val userTweets = redisClient.get(nick)
-    println("timeline: "+nick)
-    //userTweets.foreach(println)
+      }
+
+    }
+    case _         => self ! true
 
   }
 
+  def userTimeline(nick : String) = {
+    //val userTweets = redisClient.get(nick)
+    //println("timeline: "+nick)
+    //userTweets.foreach(println)
 
-//  def close(){
-//    consumer.shutdown()
-//  }
-
-  def receive = {
-    case KConsumer => log.info("waba waba!"); getData
-    case _      => self ! true
   }
 
   //  def receiveFromKafka(n : Integer, topicMessageStreams: Map[String, List[KafkaStream[Array[Byte], Array[Byte]]]]) = {
