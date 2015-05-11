@@ -1,10 +1,7 @@
 package hello
 
 import akka.actor.{ActorRef, Actor}
-import twitter4j.StatusListener
-import twitter4j.Status
-import twitter4j.StallWarning
-import twitter4j.StatusDeletionNotice
+import twitter4j._
 
 case object run
 
@@ -13,7 +10,7 @@ class TwitterStream(stream : twitter4j.TwitterStream, kproducer : ActorRef) exte
     class OnTweetPosted extends StatusListener {
       
       override def onStatus(status: Status): Unit = {
-        kproducer ! KProd(status)
+          kproducer ! consume(status)
       }
       override def onException(ex: Exception): Unit = throw ex
       // no-op for the following events
@@ -21,13 +18,14 @@ class TwitterStream(stream : twitter4j.TwitterStream, kproducer : ActorRef) exte
       override def onDeletionNotice(statusDeletionNotice: StatusDeletionNotice): Unit = {}
       override def onScrubGeo(userId: Long, upToStatusId: Long): Unit = {}
       override def onTrackLimitationNotice(numberOfLimitedStatuses: Int): Unit = {}
+
     }
 
+    stream.addListener(new OnTweetPosted())
+    stream.sample()
+
     def receive = {
-      case run => {
-        stream.addListener(new OnTweetPosted())
-        stream.sample()
-      }
+      case _ => println("questamerda?!")
     }
 
 }

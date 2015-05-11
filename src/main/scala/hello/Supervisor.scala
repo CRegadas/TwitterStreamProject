@@ -1,18 +1,30 @@
 package hello
 
-import akka.actor.{ActorSystem, Props, Actor}
+import akka.actor.{PoisonPill, ActorSystem, Props, Actor}
+import kafka.consumer.KafkaStream
 import kafka.javaapi.producer.Producer
 import redis.RedisClient
+import twitter4j.Status
 
-class Supervisor(redis: RedisClient, system: ActorSystem, stream : twitter4j.TwitterStream, topic : String, producer: Producer[String, String]) extends Actor {
+case object filter
 
-  val filter = system.actorOf(Props(classOf[FilterControl]))
-  val kproducer = system.actorOf(Props(classOf[KafkaProducer], redis, topic, producer, filter))
-  val tstream = system.actorOf(Props(classOf[TwitterStream], stream, kproducer))
+class Supervisor(redis: RedisClient, stream : twitter4j.TwitterStream, topic : String, producer: Producer[String, Status]) extends Actor {
 
-  tstream ! run
+  val filterr = context.actorOf(Props(classOf[FilterControl]))
+  val kproducer = context.actorOf(Props(classOf[KafkaProducer], redis, topic, producer))
+  val tstream = context.actorOf(Props(classOf[TwitterStream], stream, kproducer))
 
   def receive = {
+    case filter => {
+      println("coisas")
+      kproducer ! filterControl(filterr)
+    }
+
+    case PoisonPill => {
+      kproducer ! PoisonPill
+      tstream ! PoisonPill
+      context.stop(self)
+    }
     case _ => println("WTF????")
   }
 

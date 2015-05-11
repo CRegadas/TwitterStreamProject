@@ -7,7 +7,7 @@ import redis.RedisClient
 //case class KConsumer(redisClient: RedisClient, kafkaStream: KafkaStream[Array[Byte],Array[Byte]])
 case object KConsumer
 
-class KafkaConsumer(redisClient: RedisClient, kafkaStream: KafkaStream[Array[Byte],Array[Byte]]) extends Actor with ActorLogging{
+class KafkaConsumer(redisClient: RedisClient, kafkaStream: KafkaStream[Array[Byte], Array[Byte]]) extends Actor with ActorLogging{
 
   def receive = {
 

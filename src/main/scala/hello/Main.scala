@@ -1,12 +1,14 @@
 package hello
 
 import java.util.Properties
-import akka.actor.Props
+import akka.actor.{PoisonPill, Props}
+//import hello.mock.MockTwitterStream
 import kafka.javaapi.producer.Producer
 import kafka.producer.ProducerConfig
 import redis.RedisClient
 import twitter4j.TwitterStreamFactory
 import twitter4j.conf.ConfigurationBuilder
+import twitter4j.Status
 
 
 object Main extends App {
@@ -22,38 +24,39 @@ object Main extends App {
     .setOAuthConsumerSecret("Y5k7hCkHDTTSJzUwWXBz4O30bHU6rlGydAZTedEc8GHVTvBiyG")
     .setOAuthAccessToken("3166270558-x1uMGZ2t9gcqOEQr90ww6OKDMGKI0n7xYdIKUJz")
     .setOAuthAccessTokenSecret("wWJXdqAgyR5iAXTgjqrMxsHvLoBWjVZCgTMbn5txEJQi8")
-    .setUseSSL(true)
+    //.setJSONStoreEnabled(true)
     .build
 
     val stream = new TwitterStreamFactory(config).getInstance()
-
-//    val props = new Properties
-//    props.put("group.id", "1")
-//    props.put("auto.commit.interval.ms", "100")
-//    props.put("auto.commit.enable.reset", "true")
-//    props.put("zookeeper.connect", "localhost:2181")
-//
-//    val consumer = Consumer.create(new ConsumerConfig(props))
-//    val topicMessageStreams = consumer.createMessageStreams(Map(topic -> 1))
-//    val test = topicMessageStreams(topic)(0)
-
+    //val stream  = new MockTwitterStream
 
     // Zookeeper connection properties
     val props = new Properties
     props.put("metadata.broker.list", "localhost:9092")
-    props.put("serializer.class", "kafka.serializer.StringEncoder")
+    props.put("serializer.class", "hello.JsonEncoder")
     props.put("producer.type", "sync")
     props.put("compression.codec", "gzip")
 
     val pconfig = new ProducerConfig(props)
-    val producer: Producer[String, String] = new Producer[String, String](pconfig)
+    val producer = new Producer[String, Status](pconfig)
 
-    val twitterSuperVisor = akkaSystem.actorOf(Props(new Supervisor(redis, akkaSystem, stream, topic, producer)))
+
+    // Creates the SuperVisor actor
+    val twitterSuperVisor = akkaSystem.actorOf(Props(new Supervisor(redis, stream, topic, producer)))
+
+    //ask to filter the data
+    //val propFilterTag = Props(classOf[ByHashtags], propsConsume, topic)
+    //twitterSuperVisor ! filter
 
     //val sparkConf = new SparkConf().setAppName("StreamTest2").setMaster("spark://localhost:2181")
     //val ssc = new StreamingContext(sparkConf, Seconds(2))
 
 
     Thread.sleep(1000000)
+
+    twitterSuperVisor ! PoisonPill
+
+    producer.close
+    akkaSystem.shutdown()
 
 }
