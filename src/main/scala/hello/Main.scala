@@ -2,13 +2,14 @@ package hello
 
 import java.util.Properties
 import akka.actor.{PoisonPill, Props}
-//import hello.mock.MockTwitterStream
+import hello.mock.MockTwitterStream
+
 import kafka.javaapi.producer.Producer
 import kafka.producer.ProducerConfig
 import redis.RedisClient
 import twitter4j.TwitterStreamFactory
 import twitter4j.conf.ConfigurationBuilder
-import twitter4j.Status
+
 
 
 object Main extends App {
@@ -27,18 +28,19 @@ object Main extends App {
     //.setJSONStoreEnabled(true)
     .build
 
-    val stream = new TwitterStreamFactory(config).getInstance()
-    //val stream  = new MockTwitterStream
+    //val stream = new TwitterStreamFactory(config).getInstance()
+    val stream = new MockTwitterStream
 
     // Zookeeper connection properties
     val props = new Properties
     props.put("metadata.broker.list", "localhost:9092")
-    props.put("serializer.class", "hello.JsonEncoder")
+    //props.put("serializer.class", "hello.JsonEncoder")
+    props.put("serializer.class", "kafka.serializer.StringEncoder")
     props.put("producer.type", "sync")
     props.put("compression.codec", "gzip")
 
     val pconfig = new ProducerConfig(props)
-    val producer = new Producer[String, Status](pconfig)
+    val producer = new Producer[String, String](pconfig)
 
 
     // Creates the SuperVisor actor
@@ -46,11 +48,10 @@ object Main extends App {
 
     //ask to filter the data
     //val propFilterTag = Props(classOf[ByHashtags], propsConsume, topic)
-    //twitterSuperVisor ! filter
+    twitterSuperVisor ! filter
 
     //val sparkConf = new SparkConf().setAppName("StreamTest2").setMaster("spark://localhost:2181")
     //val ssc = new StreamingContext(sparkConf, Seconds(2))
-
 
     Thread.sleep(1000000)
 

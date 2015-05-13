@@ -2,28 +2,22 @@ package hello
 
 import java.util.{Date, Properties}
 import akka.actor._
-import kafka.consumer.KafkaStream
 import kafka.javaapi.producer.Producer
 import kafka.producer.KeyedMessage
 import redis.RedisClient
-import twitter4j.Status
-import twitter4j.HashtagEntity
-import twitter4j.TwitterObjectFactory
-import scala.collection.mutable._
-import net.liftweb.json._
-import net.liftweb.json.Serialization.write
+
+import twitter4j.{JSONObject, Status, HashtagEntity}
+import utils.{TwitterStreamExtend, JSONUtils}
 
 
 case class consume(s : Status)
 case class addHashtags(entity : HashtagEntity, tweet: String)
 case class filterControl(filterRef: ActorRef)
 
-class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[String, Status]) extends Actor with ActorLogging {
+class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[String, String], stream : TwitterStreamExtend) extends Actor with ActorLogging {
 
   def receive = {
     case consume(s) => {
-      println("primeiro: "+s)
-
       //log.info("waba waba!");
 
       //      val time = System.currentTimeMillis()
@@ -32,10 +26,17 @@ class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[
 
       // envia uma msg para o kafka
       //val msg: String = s.getUser.getScreenName + '=' + s.getText
-	implicit val formats = DefaultFormats
-	val json = write(s)	
-      	println("JSONNN: "+json)
-	producer.send(new KeyedMessage[String, Status](topic, s))
+
+      println("Status_antes_kafka: "+s)
+
+      val jobj = new JSONObject(s)
+      println(jobj)
+
+      val jsonObj: AnyRef = JSONUtils.prepareJSONObjectToStatus(new JSONObject(s))
+      val str: String = jsonObj.toString
+      //val status: StatusJSONImpl = new StatusJSONImpl(jsonObj,stream.getConfiguration)
+      println("KP_JSON: "+jsonObj)
+	    producer.send(new KeyedMessage[String, String](topic, str))
 
       println("Nick: " + s.getUser.getScreenName)
 

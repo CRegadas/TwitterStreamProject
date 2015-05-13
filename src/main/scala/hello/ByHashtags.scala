@@ -1,13 +1,11 @@
 package hello
 
-import java.io.{FileInputStream, ObjectInputStream, ByteArrayInputStream}
 import java.util.Properties
 
 import akka.actor.{ActorRef, Actor}
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.dataformat.smile.SmileFactory
 import kafka.consumer.{ConsumerConfig, Consumer}
-import twitter4j.{Status, HashtagEntity, TwitterObjectFactory}
+import twitter4j.{TwitterObjectFactory, HashtagEntity}
+
 
 case object selectTags
 
@@ -25,21 +23,15 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
     case addTagsToRedis(ref) => {
       println("entrei aqui!")
       while(kafkaStream.hasNext()) {
-        println("entrei aqui!")
+	      val json = new String(kafkaStream.next().message(), "UTF-8")
+        val statusJson = TwitterObjectFactory.createStatus(json)
+	      println("JSON: "+statusJson)
 
-	//val json = new String(kafkaStream.next().message(), "UTF-8")
-        val obj = new ObjectMapper()
-       // val status = obj.readValue(kafkaStream.next().message(), classOf[Status])
-	//println("JSON: "+json)
-        //val string = new String(kafkaStream.next().message(), "UTF-8")
-        //println("Lixera:" +string)
-
-
-//        status.getHashtagEntities.foreach(entity => {
-//          println("Hashtag: #"+entity.getText)
-//          ref ! addHashtags(entity, status.getText)
-//          hashtags:+entity
-//        })
+        statusJson.getHashtagEntities.foreach(entity => {
+          println("Hashtag: #"+entity.getText)
+          ref ! addHashtags(entity, statusJson.getText)
+          hashtags:+entity
+        })
 
       }
 
