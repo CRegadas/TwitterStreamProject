@@ -1,4 +1,4 @@
-package utils;
+package twitter.extend;
 
 /**
  * Created by carlaregadas on 13-05-2015.

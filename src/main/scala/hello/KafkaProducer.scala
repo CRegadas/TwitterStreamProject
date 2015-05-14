@@ -5,9 +5,10 @@ import akka.actor._
 import kafka.javaapi.producer.Producer
 import kafka.producer.KeyedMessage
 import redis.RedisClient
+import twitter.extend.TwitterStreamExtend
 
 import twitter4j.{JSONObject, Status, HashtagEntity}
-import utils.{TwitterStreamExtend, JSONUtils}
+import utils.JSONUtils
 
 
 case class consume(s : Status)
@@ -18,27 +19,26 @@ class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[
 
   def receive = {
     case consume(s) => {
-      //log.info("waba waba!");
 
+      /** testar a latencia **/
       //      val time = System.currentTimeMillis()
       //      val date = new Date(time)
       //      println("Time: "+date)
 
-      // envia uma msg para o kafka
-      //val msg: String = s.getUser.getScreenName + '=' + s.getText
 
-      println("Status_antes_kafka: "+s)
-
-      val jobj = new JSONObject(s)
-      println(jobj)
+      println("pois: "+new JSONObject(s))
 
       val jsonObj: AnyRef = JSONUtils.prepareJSONObjectToStatus(new JSONObject(s))
+      println(jsonObj)
       val str: String = jsonObj.toString
+      println("Antes: "+str)
       //val status: StatusJSONImpl = new StatusJSONImpl(jsonObj,stream.getConfiguration)
-      println("KP_JSON: "+jsonObj)
-	    producer.send(new KeyedMessage[String, String](topic, str))
+      // println("KP_JSON: "+jsonObj)
 
-      println("Nick: " + s.getUser.getScreenName)
+      /** envia uma msg para o kafka **/
+      producer.send(new KeyedMessage[String, String](topic, str))
+
+      //println("Nick: " + s.getUser.getScreenName)
 
       // add info. para o redis(vai ser deslocado para outro sitio)
       redisClient.sadd(s.getUser.getScreenName, s.getText)

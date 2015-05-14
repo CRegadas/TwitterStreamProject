@@ -1,4 +1,4 @@
-package utils;
+package twitter.extend;
 
 import twitter4j.StatusListener;
 import twitter4j.TwitterException;

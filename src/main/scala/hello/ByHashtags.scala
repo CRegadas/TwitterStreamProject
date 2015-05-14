@@ -21,11 +21,12 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
 
   def receive = {
     case addTagsToRedis(ref) => {
-      println("entrei aqui!")
+      //println("entrei aqui!")
       while(kafkaStream.hasNext()) {
-	      val json = new String(kafkaStream.next().message(), "UTF-8")
+        val json = new String(kafkaStream.next().message(), "UTF-8")
+        println("Depois: "+json)
         val statusJson = TwitterObjectFactory.createStatus(json)
-	      println("JSON: "+statusJson)
+	      //println("JSON: "+statusJson)
 
         statusJson.getHashtagEntities.foreach(entity => {
           println("Hashtag: #"+entity.getText)

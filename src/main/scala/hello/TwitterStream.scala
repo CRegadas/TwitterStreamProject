@@ -1,8 +1,8 @@
 package hello
 
 import akka.actor.{ActorRef, Actor}
+import twitter.extend.TwitterStreamExtend
 import twitter4j._
-import utils.TwitterStreamExtend
 
 case object run
 

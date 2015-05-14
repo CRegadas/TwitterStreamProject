@@ -4,8 +4,8 @@ import akka.actor.{PoisonPill, ActorSystem, Props, Actor}
 import kafka.consumer.KafkaStream
 import kafka.javaapi.producer.Producer
 import redis.RedisClient
+import twitter.extend.TwitterStreamExtend
 import twitter4j.Status
-import utils.TwitterStreamExtend
 
 case object filter
 

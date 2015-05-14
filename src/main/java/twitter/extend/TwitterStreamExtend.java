@@ -1,4 +1,4 @@
-package utils;
+package twitter.extend;
 
 import twitter4j.*;
 import twitter4j.auth.OAuthSupport;
