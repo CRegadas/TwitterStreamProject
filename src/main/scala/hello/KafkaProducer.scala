@@ -26,7 +26,7 @@ class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[
       //      println("Time: "+date)
 
 
-      println("pois: "+new JSONObject(s))
+      //println("pois: "+new JSONObject(s))
 
       val jsonObj: AnyRef = JSONUtils.prepareJSONObjectToStatus(new JSONObject(s))
       val str: String = jsonObj.toString

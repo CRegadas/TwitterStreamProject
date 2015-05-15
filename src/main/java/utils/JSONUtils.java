@@ -41,9 +41,10 @@ public class JSONUtils {
                 }
             }
 
-            if(entitiesObj.length()>0)
-                joo.put("entities", entitiesObj);
-            System.out.println("JSONObject com Entities OBj: " +joo);
+            if(entitiesObj.length()>0) {
+                joo.put("entities", prepareJSONObjectToStatus(entitiesObj));
+                System.out.println("JSONObject com Entities OBj: " + joo.get("entities"));
+            }
             return joo;
         }
 
