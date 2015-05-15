@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10cf9637-895a-4ada-baba-aca5ac9e2abf" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/utils/StatusStreamExtend.java" afterPath="$PROJECT_DIR$/src/main/java/twitter/extend/StatusStreamExtend.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/utils/StreamListenerExtend.java" afterPath="$PROJECT_DIR$/src/main/java/twitter/extend/StreamListenerExtend.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/utils/TwitterStreamExtend.java" afterPath="$PROJECT_DIR$/src/main/java/twitter/extend/TwitterStreamExtend.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/utils/UserStreamExtend.java" afterPath="$PROJECT_DIR$/src/main/java/twitter/extend/UserStreamExtend.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/hello/ByHashtags.scala" afterPath="$PROJECT_DIR$/src/main/scala/hello/ByHashtags.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/JSONUtils.java" afterPath="$PROJECT_DIR$/src/main/java/utils/JSONUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/hello/KafkaProducer.scala" afterPath="$PROJECT_DIR$/src/main/scala/hello/KafkaProducer.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/hello/mock/MockTwitterStream.scala" afterPath="$PROJECT_DIR$/src/main/scala/hello/mock/MockTwitterStream.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/hello/Supervisor.scala" afterPath="$PROJECT_DIR$/src/main/scala/hello/Supervisor.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/hello/TwitterStream.scala" afterPath="$PROJECT_DIR$/src/main/scala/hello/TwitterStream.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hello.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,25 +79,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JSONUtils.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JSONUtils.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/JSONUtils.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1730#1738#0" expanded="true" />
+                <element signature="e#2410#2418#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HashtagEntityJSONImpl.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/HashtagEntityJSONImpl.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.68">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -114,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/scala/hello/ByHashtags.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
+              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
               <folding>
                 <element signature="e#15#42#0" expanded="true" />
               </folding>
@@ -122,21 +104,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatusJSONImpl.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/StatusJSONImpl.class">
+      <file leaf-file-name="JSONObject.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/JSONObject.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.66">
-              <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+            <state vertical-scroll-proportion="-12.24">
+              <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KafkaProducer.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StatusJSONImpl.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/StatusJSONImpl.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.54">
+              <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HashtagEntityJSONImpl.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/HashtagEntityJSONImpl.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.4">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KafkaProducer.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/hello/KafkaProducer.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30322582">
-              <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
               <folding>
                 <element signature="e#15#50#0" expanded="true" />
               </folding>
@@ -147,8 +149,8 @@
       <file leaf-file-name="MockTwitterStream.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/hello/mock/MockTwitterStream.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
+            <state vertical-scroll-proportion="9.16129">
+              <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
               <folding>
                 <element signature="e#20#105#0" expanded="true" />
               </folding>
@@ -193,9 +195,9 @@
         <option value="$PROJECT_DIR$/src/main/java/utils/TwitterStreamExtend.java" />
         <option value="$PROJECT_DIR$/src/main/scala/hello/TwitterStream.scala" />
         <option value="$PROJECT_DIR$/src/main/java/twitter/extend/StatusStreamExtend.java" />
-        <option value="$PROJECT_DIR$/src/main/scala/hello/ByHashtags.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/hello/KafkaProducer.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/hello/mock/MockTwitterStream.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/hello/KafkaProducer.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/hello/ByHashtags.scala" />
         <option value="$PROJECT_DIR$/src/main/java/utils/JSONUtils.java" />
       </list>
     </option>
@@ -218,9 +220,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="1680" />
     <option name="y" value="24" />
-    <option name="width" value="1920" />
-    <option name="height" value="1056" />
+    <option name="width" value="1680" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1315,12 +1318,12 @@
       <workItem from="1431334026675" duration="125000" />
       <workItem from="1431334187940" duration="24000" />
       <workItem from="1431334970592" duration="22829000" />
-      <workItem from="1431364942473" duration="87546000" />
+      <workItem from="1431364942473" duration="103573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="349770000" />
+    <option name="totallyTimeSpent" value="365797000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1332,7 +1335,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
+    <frame x="1680" y="24" width="1680" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1343,7 +1346,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34270832" sideWeight="0.4034417" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5032258" sideWeight="0.4034417" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.59655833" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1353,8 +1356,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.249694" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14621131" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.340625" sideWeight="0.471638" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16768666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33978495" sideWeight="0.471638" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1402,22 +1405,28 @@
           <option name="timeStamp" value="181" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/scala/hello/ByHashtags.scala</url>
-          <line>25</line>
-          <properties />
-          <option name="timeStamp" value="187" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/HashtagEntityJSONImpl.class</url>
           <line>34</line>
           <properties />
           <option name="timeStamp" value="195" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/scala/hello/KafkaProducer.scala</url>
+          <url>file://$PROJECT_DIR$/src/main/scala/hello/ByHashtags.scala</url>
           <line>30</line>
           <properties />
-          <option name="timeStamp" value="196" />
+          <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utils/JSONUtils.java</url>
+          <line>16</line>
+          <properties />
+          <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utils/JSONUtils.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="202" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-3.0.6.jar!/twitter4j/internal/org/json/JSONObject.class</url>
@@ -1435,7 +1444,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="197" />
+      <option name="time" value="203" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1805,34 +1814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/hello/mock/MockTwitterStream.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="156" column="50" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
-          <folding>
-            <element signature="e#20#105#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/JSONObject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="15.04">
-          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/hello/ByHashtags.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
-          <folding>
-            <element signature="e#15#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/TwitterObjectFactory.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.48">
@@ -1841,18 +1822,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/JSONObject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.24">
+          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/hello/KafkaProducer.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <element signature="e#15#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/hello/mock/MockTwitterStream.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.16129">
+          <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
+          <folding>
+            <element signature="e#20#105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/hello/ByHashtags.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+          <folding>
+            <element signature="e#15#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/HashtagEntityJSONImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.68">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state vertical-scroll-proportion="-7.4">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.twitter4j/twitter4j-core/jars/twitter4j-core-4.0.3.jar!/twitter4j/StatusJSONImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.66">
-          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+        <state vertical-scroll-proportion="-3.54">
+          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1860,20 +1879,10 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/JSONUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1730#1738#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/hello/KafkaProducer.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30322582">
-          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-          <folding>
-            <element signature="e#15#50#0" expanded="true" />
+            <element signature="e#2410#2418#0" expanded="true" />
           </folding>
         </state>
       </provider>

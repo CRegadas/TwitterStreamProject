@@ -20,27 +20,38 @@ public class JSONUtils {
             JSONObject jo=((JSONObject) jsonObject);
             JSONArray names = jo.names();
             JSONObject entitiesObj = new JSONObject();
+            JSONArray indicesArray = new JSONArray();
             String[] nArray = jsonArrayToStringArray(names);
 
-
             for (int i = 0; i < nArray.length; i++) {
-                if(nArray[i].matches(".*-$")){
-                    String key = nArray[i].replace("-","");
-                    entitiesObj.put(key, prepareJSONObjectToStatus(jo.get((String) names.get(i))));
+                //System.out.println("nArray: " +nArray[i]);
+                if(nArray[i].matches("^start") || nArray[i].matches("^end")) {
+                    indicesArray.put(jo.get((String) names.get(i)));
+                    //System.out.println("JSONObject indices: " + indicesArray);
+                    if(indicesArray.length()>1)
+                        joo.put("indices", indicesArray);
                 }else{
-                    joo.put(nArray[i], prepareJSONObjectToStatus(jo.get((String) names.get(i))));
+                    if(nArray[i].matches(".*-$")){
+                        String key = nArray[i].replace("-","");
+                         //System.out.println("Entitie cenas: " + (jo.get((String) names.get(i))));
+                        entitiesObj.put(key, prepareJSONObjectToStatus(jo.get((String) names.get(i))));
+                    }else{
+                        joo.put(nArray[i], prepareJSONObjectToStatus(jo.get((String) names.get(i))));
+                    }
                 }
             }
 
             if(entitiesObj.length()>0)
                 joo.put("entities", entitiesObj);
-            //System.out.println("JSONObject com Entities OBj: " +joo);
+            System.out.println("JSONObject com Entities OBj: " +joo);
             return joo;
         }
+
         if(jsonObject instanceof JSONArray){
             JSONArray ja=(JSONArray)jsonObject;
             JSONArray jan=new JSONArray();
             for(int i=0;i<ja.length();i++){
+                System.out.println("Entities Array: " +ja.get(i));
                 jan.put(prepareJSONObjectToStatus(ja.get(i)));
             }
             return jan;
