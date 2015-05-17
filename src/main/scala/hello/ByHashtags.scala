@@ -30,7 +30,6 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
         val str: String = jsonObj.toString
         println("Depois: "+str)
         val statusJson = TwitterObjectFactory.createStatus(str)
-	      //println("JSON: "+statusJson)
 
         statusJson.getHashtagEntities.foreach(entity => {
           println("Hashtag: #"+entity.getText)
