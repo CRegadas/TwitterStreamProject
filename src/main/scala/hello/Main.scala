@@ -34,8 +34,8 @@ object Main extends App with Logging{
     .build
 
 
-    val stream: twitter4j.TwitterStream = new TwitterStreamFactory(config).getInstance()
-    //val stream = new MockTwitterStream
+    //val stream: twitter4j.TwitterStream = new TwitterStreamFactory(config).getInstance()
+    val stream = new MockTwitterStream
 
 
     /**  a tentar estabelecer ligação: spark com a stream do Twitter diretamente  **/
@@ -64,7 +64,7 @@ object Main extends App with Logging{
     val props = new Properties
     props.put("metadata.broker.list", "localhost:9092")
     //props.put("serializer.class", "hello.JsonEncoder")
-    props.put("serializer.class", "kafka.serializer.StringEncoder")
+    props.put("serializer.class", "kafka.serializer.DefaultEncoder")
     props.put("producer.type", "sync")
     props.put("compression.codec", "gzip")
 
