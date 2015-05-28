@@ -23,18 +23,9 @@ public class JSONUtils {
             JSONArray indicesArray = new JSONArray();
             String[] nArray = jsonArrayToStringArray(names);
 
-
-            System.out.println("JSONObject: "+jo);
+//            System.out.println("JSONObject: "+jo);
 
             for (int i = 0; i < nArray.length; i++) {
-
-                System.out.println("thumb: "+jo.get(names.get(i).toString()));
-
-
-                if(nArray[i].equals("0")) {
-
-                } else {
-
                     if (nArray[i].matches("^start") || nArray[i].matches("^end")) {
                         indicesArray.put(jo.get(names.get(i).toString()));
                         //System.out.println("JSONObject indices: " + indicesArray);
@@ -50,7 +41,6 @@ public class JSONUtils {
                             joo.put(nArray[i], prepareJSONObjectToStatus(jo.get(names.get(i).toString())));
                         }
                     }
-                }
             }
 
             if(entitiesObj.length()>0) {

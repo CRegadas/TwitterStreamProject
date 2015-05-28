@@ -21,5 +21,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "1.3.0" % "provided",
   "org.apache.spark" %% "spark-streaming" % "1.3.0",
   "org.apache.spark" %% "spark-streaming-kafka" % "1.3.0",
-  "org.apache.spark" % "spark-streaming-twitter_2.10" % "1.1.0"
+  "org.apache.spark" % "spark-streaming-twitter_2.10" % "1.1.0",
+  "com.twitter" %% "bijection-core" % "0.7.0",
+  "com.twitter" %% "bijection-avro" % "0.7.0"
 )

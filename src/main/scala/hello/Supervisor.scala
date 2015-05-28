@@ -10,7 +10,7 @@ import twitter4j.{TwitterStream, Status}
 
 case object filter
 
-class Supervisor(redis: RedisClient, stream : twitter4j.TwitterStream, topic : String, producer: Producer[String, String]) extends Actor {
+class Supervisor(redis: RedisClient, stream : twitter4j.TwitterStream, topic : String, producer: Producer[String, Array[Byte]]) extends Actor {
 
   val filterr = context.actorOf(Props(classOf[FilterControl]))
   val kproducer = context.actorOf(Props(classOf[KafkaProducer], redis, topic, producer, stream))

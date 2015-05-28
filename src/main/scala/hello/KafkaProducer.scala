@@ -17,7 +17,7 @@ case class consume(s : Status)
 case class addHashtags(entity : HashtagEntity, tweet: String)
 case class filterControl(filterRef: ActorRef)
 
-class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[String, String], stream : twitter4j.TwitterStream) extends Actor {
+class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[String, Array[Byte]], stream : twitter4j.TwitterStream) extends Actor {
 
   def receive = {
     case consume(s) => {
@@ -30,16 +30,20 @@ class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[
 
 
       println("Antes: "+s)
-      val statusRaw = TwitterObjectFactory.getRawJSON(s)
-      val jsonObjcenas = new JSONObject(statusRaw)
+
+      /** Converter Status no formato Tweet **/
+
+
+//      val statusRaw = TwitterObjectFactory.getRawJSON(s)
+//      val jsonObjcenas = new JSONObject(statusRaw)
 //      val jsonObj: AnyRef = JSONUtils.prepareJSONObjectToStatus(new JSONObject(s))
 //      val str: String = jsonObj.toString
-      println("Depois: "+jsonObjcenas)
+//      println("Depois: "+jsonObjcenas)
       //val status: StatusJSONImpl = new StatusJSONImpl(jsonObj,stream.getConfiguration)
       // println("KP_JSON: "+jsonObj)
 
       /** envia uma msg para o kafka **/
-      producer.send(new KeyedMessage[String, String](topic, statusRaw))
+//      producer.send(new KeyedMessage[String, Array[Byte]](topic, statusRaw))
 
       //println("Nick: " + s.getUser.getScreenName)
 

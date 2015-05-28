@@ -69,7 +69,7 @@ object Main extends App with Logging{
     props.put("compression.codec", "gzip")
 
     val pconfig = new ProducerConfig(props)
-    val producer = new Producer[String, String](pconfig)
+    val producer = new Producer[String, Array[Byte]](pconfig)
 
 
     /** Creates the SuperVisor actor **/
