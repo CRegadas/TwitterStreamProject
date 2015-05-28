@@ -1,12 +1,13 @@
 package hello
 
 import akka.actor.{ActorRef, Actor}
+import hello.mock.MockTwitterStream
 import twitter.extend.TwitterStreamExtend
 import twitter4j._
 
 case object run
 
-class TwitterStream(stream : TwitterStreamExtend, kproducer : ActorRef) extends Actor {
+class TwitterStream(stream : twitter4j.TwitterStream, kproducer : ActorRef) extends Actor {
 
   class OnTweetPosted extends StatusListener {
 

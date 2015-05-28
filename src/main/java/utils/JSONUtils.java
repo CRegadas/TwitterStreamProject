@@ -12,7 +12,7 @@ import java.util.List;
 
 public class JSONUtils {
 
-    public static Object prepareJSONObjectToStatus(Object jsonObject) throws Exception{
+    public static Object prepareJSONObjectToStatus(Object jsonObject) throws Exception {
 
         if(jsonObject instanceof JSONObject) {
             //System.out.println("Entrei,JsonUtils: " + jsonObject);
@@ -23,27 +23,40 @@ public class JSONUtils {
             JSONArray indicesArray = new JSONArray();
             String[] nArray = jsonArrayToStringArray(names);
 
+
+            System.out.println("JSONObject: "+jo);
+
             for (int i = 0; i < nArray.length; i++) {
-                //System.out.println("nArray: " +nArray[i]);
-                if(nArray[i].matches("^start") || nArray[i].matches("^end")) {
-                    indicesArray.put(jo.get((String) names.get(i)));
-                    //System.out.println("JSONObject indices: " + indicesArray);
-                    if(indicesArray.length()>1)
-                        joo.put("indices", indicesArray);
-                }else{
-                    if(nArray[i].matches(".*-$")){
-                        String key = nArray[i].replace("-","");
-                         //System.out.println("Entitie cenas: " + (jo.get((String) names.get(i))));
-                        entitiesObj.put(key, prepareJSONObjectToStatus(jo.get((String) names.get(i))));
-                    }else{
-                        joo.put(nArray[i], prepareJSONObjectToStatus(jo.get((String) names.get(i))));
+
+                System.out.println("thumb: "+jo.get(names.get(i).toString()));
+
+
+                if(nArray[i].equals("0")) {
+
+                } else {
+
+                    if (nArray[i].matches("^start") || nArray[i].matches("^end")) {
+                        indicesArray.put(jo.get(names.get(i).toString()));
+                        //System.out.println("JSONObject indices: " + indicesArray);
+                        if (indicesArray.length() > 1)
+                            joo.put("indices", indicesArray);
+                    } else {
+                        if (nArray[i].matches(".*-$")) {
+                            System.out.println("nArray: " + nArray[i]);
+                            String key = nArray[i].replace("-", "");
+                            System.out.println("Entitie cenas: " + (jo.get((String) names.get(i))));
+                            entitiesObj.put(key, prepareJSONObjectToStatus(jo.get(names.get(i).toString())));
+                        } else {
+                            joo.put(nArray[i], prepareJSONObjectToStatus(jo.get(names.get(i).toString())));
+                        }
                     }
                 }
             }
 
-            if(entitiesObj.length()>0)
-                joo.put("entities", entitiesObj);
-            System.out.println("JSONObject com Entities OBj: " +joo);
+            if(entitiesObj.length()>0) {
+                joo.put("entities", prepareJSONObjectToStatus(entitiesObj));
+//                System.out.println("JSONObject com Entities OBj: " + joo.get("entities"));
+            }
             return joo;
         }
 
@@ -63,7 +76,7 @@ public class JSONUtils {
         List<String> list = new ArrayList<String>();
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            String key = (String) jsonArray.opt(i);
+            String key = jsonArray.opt(i).toString();
             if (key.matches(".*[A-Z].*")) {
                 if(!key.contains("URL")) // match a comecar com URL
                     key = key.replaceAll("([A-Z])", "_$1");
