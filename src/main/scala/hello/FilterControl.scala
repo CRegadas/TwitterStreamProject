@@ -19,13 +19,7 @@ class FilterControl extends Actor {
   def receive = {
     case RequestFilter(ref) => {
       println("coises")
-      println("Referencia: "+ref)
-      //println("lastTweet: "+status.getText)
-      //println("Props: "+props.actorClass().getName)
-      //println("Sender: "+ref.toString())
-      //if(props.actorClass().getName.equals("hello.ByHashtags")){
       filterRef ! addTagsToRedis(ref)
-      //}
     }
     case _ => self ! true
   }

@@ -28,26 +28,22 @@ class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[
 
 
       println("Antes: "+s)
-      println("HashtagEntities: "+s.getHashtagEntities.length)
-      println("HashtagEntities_user: "+s.getRetweetedStatus.getHashtagEntities.length)
 
-      /** Converter Status no formato Tweet **/
 
+      /** Converter Status num Array[Byte] **/
       val bos = new ByteArrayOutputStream()
       val os = new ObjectOutputStream(bos)
       os.writeObject(s)
       val bytes = bos.toByteArray
 
-
       /** envia uma msg para o kafka **/
       producer.send(new KeyedMessage[String, Array[Byte]](topic, bytes))
 
-      // add info. para o redis(vai ser deslocado para outro sitio)
+      /** add info. para o redis(a ser movido para outro sitio) **/
       redisClient.sadd(s.getUser.getScreenName, s.getText)
       Thread.sleep(2000)
 
       os.close()
-
 
     }
 

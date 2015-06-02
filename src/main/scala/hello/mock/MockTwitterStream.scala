@@ -119,7 +119,14 @@ class MockTwitterStream extends TwitterStreamExtend {
                                                       130,
                                                       134
                                                 ]
-                                          }
+                                          },
+                                          {
+                                                "text": "LaLa",
+                                                "indices": [
+                                                      130,
+                                                      134
+                                                ]
+                                           }
                                     ]
                               },
                               "contributors": null,
@@ -214,8 +221,7 @@ class MockTwitterStream extends TwitterStreamExtend {
                   }"""
 
           val status = TwitterObjectFactory.createStatus(json)
-          //println("Ola mundo " + status)
-          (1 to 10).map(x => {
+          (1 to 1000).map(x => {
             statusListener.onStatus(status); Thread.sleep(2000)
           })
 

@@ -38,32 +38,9 @@ object Main extends App with Logging{
     val stream = new MockTwitterStream
 
 
-    /**  a tentar estabelecer ligação: spark com a stream do Twitter diretamente  **/
-//    val twitterAuth = AuthorizationFactory.getInstance(config)
-//    val sparkConf = new SparkConf()
-//                    .setAppName("StreamTest2")
-//                    .setMaster("spark://lopo1048:7077")
-
-//    val ssc = new StreamingContext(sparkConf, Seconds(2))
-//    val tweets = TwitterUtils.createStream(ssc,Some(twitterAuth))
-//
-//    val h: DStream[String] = tweets.flatMap(status => status.getText.split(" ").filter(_.startsWith("#")))
-//    h.foreachRDD(
-//        rdd => rdd.foreach(println)
-//        )
-
-//    tweets.map(status => println(status.getText))
-
-//    ssc.start()
-//    ssc.awaitTermination()
-
-//    logInfo("Tags: "+s)
-
-
     /** Zookeeper connection properties **/
     val props = new Properties
     props.put("metadata.broker.list", "localhost:9092")
-    //props.put("serializer.class", "hello.JsonEncoder")
     props.put("serializer.class", "kafka.serializer.DefaultEncoder")
     props.put("producer.type", "sync")
     props.put("compression.codec", "gzip")
@@ -75,15 +52,13 @@ object Main extends App with Logging{
     /** Creates the SuperVisor actor **/
     val twitterSuperVisor = akkaSystem.actorOf(Props(new Supervisor(redis, stream, topic, producer)))
 
-    //ask to filter the data
-    //val propFilterTag = Props(classOf[ByHashtags], propsConsume, topic)
+    /** ask to filter the data **/
     twitterSuperVisor ! filter
 
     Thread.sleep(100000)
 
-    //twitterSuperVisor ! PoisonPill
+    twitterSuperVisor ! PoisonPill
 
-    //producer.close
     akkaSystem.shutdown()
 
 }
