@@ -14,7 +14,7 @@ import twitter4j._
 
 case class consume(s : Status)
 case class addHashtags(entity : HashtagEntity, tweet: String)
-case class filterControl(filterRef: ActorRef)
+case class filterC(filterRef: ActorRef)
 
 class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[String, Array[Byte]], stream : MockTwitterStream) extends Actor {
 
@@ -47,7 +47,7 @@ class KafkaProducer(redisClient: RedisClient, topic: String, producer: Producer[
 
     }
 
-    case filterControl(filterRef) => {
+    case filterC(filterRef) => {
       filterRef ! RequestFilter(self)
     }
 

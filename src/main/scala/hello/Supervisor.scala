@@ -6,7 +6,7 @@ import kafka.consumer.KafkaStream
 import kafka.javaapi.producer.Producer
 import redis.RedisClient
 import twitter.extend.TwitterStreamExtend
-import twitter4j.{TwitterStream, Status}
+import twitter4j.Status
 
 case object filter
 
@@ -17,9 +17,9 @@ class Supervisor(redis: RedisClient, stream : MockTwitterStream, topic : String,
   val tstream = context.actorOf(Props(classOf[TwitterStream], stream, kproducer))
 
   def receive = {
-    case filter => {
+    case `filter` => {
       println("coisas")
-      kproducer ! filterControl(filterr)
+      kproducer ! filterC(filterr)
     }
 
     case PoisonPill => {

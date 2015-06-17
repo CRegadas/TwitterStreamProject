@@ -2,9 +2,12 @@ package hello
 
 
 import java.io.{ByteArrayInputStream, ObjectInputStream}
+import java.util
 import java.util.{Date, Properties}
 
 import akka.actor.{ActorRef, Actor}
+import kafka.consumer.{ConsumerConfig, Consumer}
+import org.apache.spark.rdd.RDD
 import org.apache.spark.streaming.dstream.{DStream, ReceiverInputDStream}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import kafka.serializer.{DefaultDecoder, StringDecoder}
@@ -24,6 +27,8 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
 //  val topicMessageStreams = consumer.createMessageStreams(Map(topic -> 1))
 //  val kafkaStream = topicMessageStreams(topic)(0).iterator
 
+  var hashtags = List[HashtagEntity]()
+
   /** estabelecer ligacao do spark com kafka **/
   val sparkConf = new SparkConf()
     .setAppName("StreamTest2")
@@ -41,7 +46,7 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
           "zookeeper.connect" -> "localhost:2181",
           "auto.commit.interval.ms" -> "100",
           "auto.commit.enable.reset" -> "true",
-          "group.id" -> "1")
+          "group.id" -> "16666")
         KafkaUtils.createStream[String, Array[Byte], StringDecoder, DefaultDecoder](
           ssc, kafkaParams, topics, StorageLevel.MEMORY_ONLY)
       }
@@ -49,13 +54,10 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
       /** create an accumulator **/
       val numInputTweet = ssc.sparkContext.accumulator(0L, "Kafka messages consumed")
 
-      val ds: DStream[Array[Byte]] = encTweets.map(_._2)
-
-      def getHashT(tweet: Array[Byte]) : Array[HashtagEntity] = {
-
-        val ht = Array[HashtagEntity]()
-        numInputTweet += 1
-        println(numInputTweet)
+      def getHashT(tweet: Array[Byte], ht: Array[HashtagEntity]) : Array[HashtagEntity] = {
+        println("WABA WABA")
+//        numInputTweet += 1
+//        println(numInputTweet)
         val status = new ObjectInputStream(new ByteArrayInputStream(tweet)).readObject().asInstanceOf[Status]
         println("Passei aqui!")
         if(status.getHashtagEntities!=null){
@@ -82,13 +84,35 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
 
       }
 
-      val sHT: DStream[HashtagEntity] = ds.flatMap(s => getHashT(s))
+//      val ds: DStream[Array[HashtagEntity]] = encTweets.flatMap(data => {
+//        val ht = Array[HashtagEntity]()
+//        val array = getHashT(data._2,ht)
+//        array.foreach(println)
+//        List(array)
+//      })
+
+
+
+      val ds = encTweets.map(_._1)
+        ds.foreachRDD(rdd =>{
+        val ht = Array[HashtagEntity]()
+        val tweets = rdd.collect()
+          numInputTweet += 1
+          println("RDD " + numInputTweet)
+          println("Tweets "+tweets.length)
+          println("number of RDDs " + rdd.count())
+
+
+//        tweets.foreach(tweet => {
+//          getHashT(tweet,ht)
+//        })
+      })
 
       /** Send the processed data to be saved on redis **/
-      sHT.foreachRDD(rdd => rdd.foreach(hash => ref ! addHashtags(hash,"")))
-
+//      sHT.foreachRDD(rdd => rdd.foreach(hash => ref ! addHashtags(hash,"")))
+//
 //      dstreamHashtags.saveAsHadoopFiles()
-
+//
 //      ds.foreachRDD(rdd => {
 //        println("RDD: "+rdd)
 //        rdd.collect().map(println(_))
@@ -100,11 +124,14 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
       ssc.awaitTermination()
 
 
-
+//
 //      while(kafkaStream.hasNext()) {
 //
 //        val is = new ObjectInputStream(new ByteArrayInputStream(kafkaStream.next().message()))
 //        val status = is.readObject().asInstanceOf[Status]
+//
+//        if(!hashtags.isEmpty)
+//          hashtags.foreach(tag => {println("Tag do array hashtags: "+tag.getText)})
 //
 //        is.close()
 //
@@ -115,8 +142,8 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
 //          println("entrei aqui2!")
 //          status.getHashtagEntities.foreach(entity => {
 //            println("Hashtag: #"+entity.getText)
+//            hashtags = hashtags:+entity
 //            ref ! addHashtags(entity, status.getText)
-//            hashtags:+entity
 //          })
 //        }
 //
@@ -124,10 +151,12 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
 //          println("entrei aqui3!")
 //          status.getRetweetedStatus.getHashtagEntities.foreach(entity => {
 //            println("HashTag: #" + entity.getText)
+//            hashtags = hashtags:+entity
 //            ref ! addHashtags(entity,status.getText)
-//            hashtags:+entity
 //          })
 //        }
+//
+//        hashtags = hashtags.distinct
 //
 //      }
 
