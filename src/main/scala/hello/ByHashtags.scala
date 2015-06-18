@@ -1,11 +1,11 @@
 package hello
 
 
-import java.io.{ByteArrayInputStream, ObjectInputStream}
+import java.io.{Serializable, ByteArrayInputStream, ObjectInputStream}
 import java.util
 import java.util.{Date, Properties}
 
-import akka.actor.{ActorRef, Actor}
+import akka.actor.{Props, ActorRef, Actor}
 import kafka.consumer.{ConsumerConfig, Consumer}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.streaming.dstream.{DStream, ReceiverInputDStream}
@@ -27,17 +27,15 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
 //  val topicMessageStreams = consumer.createMessageStreams(Map(topic -> 1))
 //  val kafkaStream = topicMessageStreams(topic)(0).iterator
 
-  var hashtags = List[HashtagEntity]()
-
   /** estabelecer ligacao do spark com kafka **/
-  val sparkConf = new SparkConf()
-    .setAppName("StreamTest2")
-    .setMaster("spark://lopo1048:7077")
-  val ssc = new StreamingContext(sparkConf, Seconds(5))
+//  val sparkConf = new SparkConf()
+//    .setAppName("StreamTest2")
+//    .setMaster("spark://lopo1048:7077")
+  val ssc = new StreamingContext(new SparkConf(), Seconds(2))
 
   def receive = {
     case addTagsToRedis(ref) => {
-      println("entrei aqui!")
+      println("entrei aqui_addTags!")
 
       /** create an Kafka Stream **/
       val encTweets: ReceiverInputDStream[(String, Array[Byte])] = {
@@ -52,61 +50,24 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
       }
 
       /** create an accumulator **/
-      val numInputTweet = ssc.sparkContext.accumulator(0L, "Kafka messages consumed")
+      //val numInputTweet = ssc.sparkContext.accumulator(0L, "Kafka messages consumed")
 
-      def getHashT(tweet: Array[Byte], ht: Array[HashtagEntity]) : Array[HashtagEntity] = {
-        println("WABA WABA")
-//        numInputTweet += 1
-//        println(numInputTweet)
-        val status = new ObjectInputStream(new ByteArrayInputStream(tweet)).readObject().asInstanceOf[Status]
-        println("Passei aqui!")
-        if(status.getHashtagEntities!=null){
-          //Analisar se as hashtags encontradas num retweet sao as mesmas do tweet em causa
-          println("entrei aqui2!")
-          status.getHashtagEntities.foreach(entity => {
-            println("Hashtag: #"+entity.getText)
 
-            //ref ! addHashtags(entity, status.getText)
-            ht:+entity
-          })
-        }
 
-        if(status.getRetweetedStatus.getHashtagEntities!=null){
-          println("entrei aqui3!")
-          status.getRetweetedStatus.getHashtagEntities.foreach(entity => {
-            println("HashTag: #" + entity.getText)
-            //ref ! addHashtags(entity,status.getText)
-            ht:+entity
-          })
-        }
-
-        return ht
-
-      }
-
-//      val ds: DStream[Array[HashtagEntity]] = encTweets.flatMap(data => {
-//        val ht = Array[HashtagEntity]()
-//        val array = getHashT(data._2,ht)
-//        array.foreach(println)
-//        List(array)
+//      val ds: DStream[Array[HashtagEntity]] = encTweets.map(pair => {
+//        println("-------------------------------------------------------------")
+//        getHashT(pair._2,Array[HashtagEntity]())
 //      })
 
-
-
-      val ds = encTweets.map(_._1)
-        ds.foreachRDD(rdd =>{
-        val ht = Array[HashtagEntity]()
-        val tweets = rdd.collect()
-          numInputTweet += 1
-          println("RDD " + numInputTweet)
-          println("Tweets "+tweets.length)
-          println("number of RDDs " + rdd.count())
-
-
-//        tweets.foreach(tweet => {
-//          getHashT(tweet,ht)
-//        })
+      val ds: DStream[Array[Byte]] = encTweets.map(_._2)
+      val dhtags: DStream[String] = ds.flatMap(tweet => {
+        val hashtags: Array[HashtagEntity] = new SparkTasks(ref).getHashT(tweet,Array[HashtagEntity]())
+        List("waba_1","waba_2")
       })
+      dhtags.print()
+
+
+//      ssc.sparkContext.parallelize(1 to 1000).count()
 
       /** Send the processed data to be saved on redis **/
 //      sHT.foreachRDD(rdd => rdd.foreach(hash => ref ! addHashtags(hash,"")))
