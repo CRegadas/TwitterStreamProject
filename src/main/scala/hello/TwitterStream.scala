@@ -7,7 +7,7 @@ import twitter4j._
 
 case object run
 
-class TwitterStream(stream : MockTwitterStream, kproducer : ActorRef) extends Actor {
+class TwitterStream(stream : twitter4j.TwitterStream, kproducer : ActorRef) extends Actor {
 
   class OnTweetPosted extends StatusListener {
 

@@ -13,15 +13,16 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 import kafka.serializer.{DefaultDecoder, StringDecoder}
 import org.apache.spark.storage.StorageLevel
 import org.apache.spark.streaming.kafka._
-import org.apache.spark.SparkConf
+import org.apache.spark.{Logging, SparkConf}
 import twitter4j._
 
 
 
 case object selectTags
 case class addTagsToRedis(ref: ActorRef)
+case object top
 
-class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
+class ByHashtags(propsConsume: Properties, topic: String) extends Actor with Logging{
 
 //  val consumer = Consumer.create(new ConsumerConfig(propsConsume))
 //  val topicMessageStreams = consumer.createMessageStreams(Map(topic -> 1))
@@ -32,6 +33,7 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
 //    .setAppName("StreamTest2")
 //    .setMaster("spark://lopo1048:7077")
   val ssc = new StreamingContext(new SparkConf(), Seconds(2))
+  var teste = Map[String,Integer]()
 
   def receive = {
     case addTagsToRedis(ref) => {
@@ -49,43 +51,27 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
           ssc, kafkaParams, topics, StorageLevel.MEMORY_ONLY)
       }
 
+
       /** create an accumulator **/
       //val numInputTweet = ssc.sparkContext.accumulator(0L, "Kafka messages consumed")
 
-
-
-//      val ds: DStream[Array[HashtagEntity]] = encTweets.map(pair => {
-//        println("-------------------------------------------------------------")
-//        getHashT(pair._2,Array[HashtagEntity]())
-//      })
-
+      /** Collect all the hashtags and store in redis **/
       val ds: DStream[Array[Byte]] = encTweets.map(_._2)
-      val dhtags: DStream[String] = ds.flatMap(tweet => {
-        val hashtags: Array[HashtagEntity] = new SparkTasks(ref).getHashT(tweet,Array[HashtagEntity]())
-        List("waba_1","waba_2")
+      val dhtags: DStream[(HashtagEntity, String)] = ds.flatMap(t => {
+        new SparkTasks().getHashT(t)
       })
-      dhtags.print()
+      dhtags.foreachRDD(rdd => {val tags = rdd.collect(); tags.foreach(t=> { println("Hashyy: "+t._1.getText); ref!addHashtags(t._1,t._2) })})
 
-
-//      ssc.sparkContext.parallelize(1 to 1000).count()
-
-      /** Send the processed data to be saved on redis **/
-//      sHT.foreachRDD(rdd => rdd.foreach(hash => ref ! addHashtags(hash,"")))
-//
-//      dstreamHashtags.saveAsHadoopFiles()
-//
-//      ds.foreachRDD(rdd => {
-//        println("RDD: "+rdd)
-//        rdd.collect().map(println(_))
-//        ref ! addHashtags(rdd,"")
-//      })
-
+      val newDS: DStream[((HashtagEntity, String), Int)] = dhtags.map(k => (k, 1)).reduceByKey(_ + _)
+      newDS.foreachRDD(rdd =>{val cena = rdd.collect(); cena.foreach(par =>{ println("HASH_GUARDADA: "+par); teste += par._1._2 -> par._2 })})
+      teste.foreach(println)
+      //Thread.sleep(800)
 
       ssc.start()
       ssc.awaitTermination()
 
 
-//
+
 //      while(kafkaStream.hasNext()) {
 //
 //        val is = new ObjectInputStream(new ByteArrayInputStream(kafkaStream.next().message()))
@@ -123,15 +109,23 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor{
 
     }
 
+    /** Most used hashtags on twitter **/
+    case top => {
+
+
+
+
+
+    }
+
     case _ => println("WTF????")
 
   }
 
 
-  def top5 =
-  {
 
-  }
 
 
 }
+
+

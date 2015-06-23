@@ -32,8 +32,8 @@ object Main extends App with Logging {
         .setJSONStoreEnabled(true)
         .build
 
-        //val stream: twitter4j.TwitterStream = new TwitterStreamFactory(config).getInstance()
-        val stream = new MockTwitterStream
+        val stream: twitter4j.TwitterStream = new TwitterStreamFactory(config).getInstance()
+        //val stream = new MockTwitterStream
 
         /** Zookeeper connection properties **/
         val props = new Properties
@@ -57,7 +57,6 @@ object Main extends App with Logging {
         twitterSuperVisor ! PoisonPill
 
         akkaSystem.shutdown()
-
 
 
 

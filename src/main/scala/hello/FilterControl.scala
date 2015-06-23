@@ -20,6 +20,7 @@ class FilterControl extends Actor {
     case RequestFilter(ref) => {
       println("coises")
       filterRef ! addTagsToRedis(ref)
+      //filterRef ! top
     }
     case _ => self ! true
   }
