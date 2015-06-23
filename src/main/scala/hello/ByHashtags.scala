@@ -33,7 +33,7 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor with Log
 //    .setAppName("StreamTest2")
 //    .setMaster("spark://lopo1048:7077")
   val ssc = new StreamingContext(new SparkConf(), Seconds(2))
-  var teste = Map[String,Integer]()
+  var teste = List[(String, Int)]()
 
   def receive = {
     case addTagsToRedis(ref) => {
@@ -63,7 +63,7 @@ class ByHashtags(propsConsume: Properties, topic: String) extends Actor with Log
       dhtags.foreachRDD(rdd => {val tags = rdd.collect(); tags.foreach(t=> { println("Hashyy: "+t._1.getText); ref!addHashtags(t._1,t._2) })})
 
       val newDS: DStream[((HashtagEntity, String), Int)] = dhtags.map(k => (k, 1)).reduceByKey(_ + _)
-      newDS.foreachRDD(rdd =>{val cena = rdd.collect(); cena.foreach(par =>{ println("HASH_GUARDADA: "+par); teste += par._1._2 -> par._2 })})
+      newDS.foreachRDD(rdd =>{val cena = rdd.collect(); cena.foreach(par =>{ println("HASH_GUARDADA: "+par); teste = teste:+(par._1._2 , par._2)})})
       teste.foreach(println)
       //Thread.sleep(800)
 
