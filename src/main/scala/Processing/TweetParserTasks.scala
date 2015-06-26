@@ -1,11 +1,12 @@
-package hello
+package Processing
 
 import java.io.{ByteArrayInputStream, ObjectInputStream}
+
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.Logging
-import twitter4j.{MediaEntity, Status, HashtagEntity}
+import twitter4j.{HashtagEntity, MediaEntity, Status}
 
-class SparkTasks extends Serializable with Logging{
+class TweetParserTasks extends Serializable with Logging{
 
   setStreamingLogLevels()
   println("SPARKTASKS_: WABA WABA")
@@ -45,10 +46,12 @@ class SparkTasks extends Serializable with Logging{
 
   }
 
-  def getMusicHashtags(tweet : Array[Byte]) : List[MediaEntity] =
+  def getMyHashtag(tweet : Array[Byte]) : List[MediaEntity] =
   {
     var mht = List[MediaEntity]()
     val status = getStatus(tweet)
+
+
 
     if(status.getMediaEntities == null) return mht
 

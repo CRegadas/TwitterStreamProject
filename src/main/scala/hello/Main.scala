@@ -1,29 +1,26 @@
 package hello
 
-import java.util.Properties
-import akka.actor.{PoisonPill, Props}
-import hello.mock.MockTwitterStream
+import Collect.TwitterStream
+import Processing.{Spark, FilterControl}
+import Services.{KafkaService, Redis}
 
+
+import java.util.Properties
+import hello.mock.MockTwitterStream
 import kafka.javaapi.producer.Producer
 import kafka.producer.ProducerConfig
-import org.apache.spark.{SparkContext, Logging, SparkConf}
-import org.apache.spark.streaming.dstream.{InputDStream, DStream, ReceiverInputDStream}
-import org.apache.spark.streaming.twitter.TwitterUtils
-import org.apache.spark.streaming.{Seconds, StreamingContext}
-import redis.RedisClient
-import twitter4j.auth.{OAuthAuthorization, AuthorizationFactory}
-import twitter4j.{TwitterFactory, Status, TwitterStreamFactory}
+import org.apache.spark.Logging
+import twitter4j.{HashtagEntity, TwitterStreamFactory}
 import twitter4j.conf.ConfigurationBuilder
 
 
 
-object Main extends App with Logging {
 
-        implicit val akkaSystem = akka.actor.ActorSystem()
-        val redis = RedisClient()
+object Main extends App with Logging
+{
         val topic = "teste"
 
-        // TwitterStream configuration
+        /** TwitterStream configuration **/
         val config = new ConfigurationBuilder()
         .setOAuthConsumerKey("BBC5CelxP2NKtSjzGrjKfEHbl")
         .setOAuthConsumerSecret("Y5k7hCkHDTTSJzUwWXBz4O30bHU6rlGydAZTedEc8GHVTvBiyG")
@@ -45,20 +42,19 @@ object Main extends App with Logging {
         val pconfig = new ProducerConfig(props)
         val producer = new Producer[String, Array[Byte]](pconfig)
 
-
-        /** Creates the SuperVisor actor **/
-        val twitterSuperVisor = akkaSystem.actorOf(Props(new Supervisor(redis, stream, topic, producer)))
+        /**  **/
+        println("MAIN_service kafka")
+        val serviceK = new KafkaService(producer,topic)
+        new TwitterStream(stream,serviceK)
 
         /** ask to filter the data **/
-        twitterSuperVisor ! filter
+        println("MAIN_filter control")
+        val process = new Spark
+        val serviceR = new Redis
+        val filter = new FilterControl[HashtagEntity](process, serviceR)
+        filter.filterByHashTags()
 
         Thread.sleep(100000)
-
-        twitterSuperVisor ! PoisonPill
-
-        akkaSystem.shutdown()
-
-
 
 }
 

@@ -1,18 +1,15 @@
-package hello
+package Collect
 
-import akka.actor.{ActorRef, Actor}
+import Services.IServices
 import hello.mock.MockTwitterStream
-import twitter.extend.TwitterStreamExtend
 import twitter4j._
 
-case object run
-
-class TwitterStream(stream : twitter4j.TwitterStream, kproducer : ActorRef) extends Actor {
+class TwitterStream(stream : twitter4j.TwitterStream, service: IServices[HashtagEntity]) {
 
   class OnTweetPosted extends StatusListener {
 
     override def onStatus(status: Status): Unit = {
-      kproducer ! consume(status)
+      service.writeStatus(status)
     }
 
     override def onException(ex: Exception): Unit = throw ex
@@ -30,10 +27,6 @@ class TwitterStream(stream : twitter4j.TwitterStream, kproducer : ActorRef) exte
 
   stream.addListener((new OnTweetPosted()))
   stream.sample()
-
-  def receive = {
-    case _ => println("questamerda?!")
-  }
 
 
 }
