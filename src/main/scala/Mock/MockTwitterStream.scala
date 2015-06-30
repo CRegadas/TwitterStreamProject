@@ -1,4 +1,4 @@
-package hello.mock
+package Mock
 
 import twitter.extend.{TwitterStreamExtend, StreamListenerExtend, StatusStreamExtend}
 import twitter4j._
@@ -8,23 +8,23 @@ import twitter.extend.UserStreamExtend
 
 class MockTwitterStream extends TwitterStreamExtend {
 
-  override def filter(filterQuery: FilterQuery): Unit = ???
+  override def filter(filterQuery: FilterQuery): Unit = { }
 
-  override def shutdown(): Unit = ???
+  override def shutdown(): Unit = { }
 
-  override def sample(): Unit = ???
+  override def sample(): Unit = { }
 
   override def links(i: Int): Unit = ???
 
   override def user(): Unit = ???
 
-  override def user(strings: Array[String]): Unit = ???
+  override def user(strings: Array[String]): Unit = { }
 
-  override def retweet(): Unit = ???
+  override def retweet(): Unit = { }
 
   override def site(b: Boolean, longs: Array[Long]): StreamController = ???
 
-  override def addConnectionLifeCycleListener(connectionLifeCycleListener: ConnectionLifeCycleListener): Unit = ???
+  override def addConnectionLifeCycleListener(connectionLifeCycleListener: ConnectionLifeCycleListener): Unit = { }
 
   def addListener(statusListener: StatusListener) =
   {
@@ -413,11 +413,13 @@ class MockTwitterStream extends TwitterStreamExtend {
                   }"""
       )
 
-    (1 to 1000).map(x => {
-          jsons.foreach(json =>{
-            statusListener.onStatus(TwitterObjectFactory.createStatus(json))
-          }); Thread.sleep(2000)
-    })
+jsons.foreach(json =>{
+  statusListener.onStatus(TwitterObjectFactory.createStatus(json))
+}); Thread.sleep(2000)
+
+    // (1 to 1000).map(x => {
+          
+    // })
 
 
   }
@@ -425,11 +427,11 @@ class MockTwitterStream extends TwitterStreamExtend {
 
   def getLinksStream(i: Int): StatusStreamExtend = ???
 
-  override def cleanUp(): Unit = ???
+  override def cleanUp(): Unit = { }
 
-  override def firehose(i: Int): Unit = ???
+  override def firehose(i: Int): Unit = { }
 
-  override def setOAuthConsumer(s: String, s1: String): Unit = ???
+  override def setOAuthConsumer(s: String, s1: String): Unit = { }
 
   override def getOAuthRequestToken: RequestToken = ???
 
@@ -437,7 +439,7 @@ class MockTwitterStream extends TwitterStreamExtend {
 
   override def getOAuthRequestToken(s: String, s1: String): RequestToken = ???
 
-  override def setOAuthAccessToken(accessToken: AccessToken): Unit = ???
+  override def setOAuthAccessToken(accessToken: AccessToken): Unit = { }
 
   override def getOAuthAccessToken: AccessToken = ???
 
@@ -449,7 +451,7 @@ class MockTwitterStream extends TwitterStreamExtend {
 
   override def getOAuthAccessToken(s: String, s1: String): AccessToken = ???
 
-  override def addRateLimitStatusListener(rateLimitStatusListener: RateLimitStatusListener): Unit = ???
+  override def addRateLimitStatusListener(rateLimitStatusListener: RateLimitStatusListener): Unit = { }
 
   override def getScreenName: String = ???
 
@@ -459,15 +461,15 @@ class MockTwitterStream extends TwitterStreamExtend {
 
   override def getConfiguration: Configuration = ???
 
-  override def sample(s: String): Unit = ???
+  override def sample(s: String): Unit = { }
 
-  override def clearListeners(): Unit = ???
+  override def clearListeners(): Unit = { }
 
   override def getOAuthRequestToken(s: String, s1: String, s2: String): RequestToken = ???
 
-  override def removeListener(streamListener: StreamListenerExtend): Unit = ???
+  override def removeListener(streamListener: StreamListenerExtend): Unit = { }
 
-  override def replaceListener(streamListener: StreamListenerExtend, streamListener1: StreamListenerExtend): Unit = ???
+  override def replaceListener(streamListener: StreamListenerExtend, streamListener1: StreamListenerExtend): Unit = { }
 
-  override def addListener(streamListener: StreamListenerExtend): Unit = ???
+  override def addListener(streamListener: StreamListenerExtend): Unit = { }
 }

@@ -16,6 +16,7 @@ class KafkaService(producer: Producer[String, Array[Byte]], topic : String) exte
     os.writeObject(tweet)
     val bytes = bos.toByteArray
 
+    println("KafkaService_WRITE_STATUS")
     producer.send(new KeyedMessage[String, Array[Byte]](topic, bytes))
     Thread.sleep(2000)
 

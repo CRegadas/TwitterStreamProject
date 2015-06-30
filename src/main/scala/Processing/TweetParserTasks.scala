@@ -9,7 +9,7 @@ import twitter4j.{HashtagEntity, MediaEntity, Status}
 class TweetParserTasks extends Serializable with Logging{
 
   setStreamingLogLevels()
-  println("SPARKTASKS_: WABA WABA")
+  println("-----------------------------------SPARKTASKS_: WABA WABA")
 
   def getStatus(tweet : Array[Byte]) : Status = {new ObjectInputStream(new ByteArrayInputStream(tweet)).readObject().asInstanceOf[Status]}
 

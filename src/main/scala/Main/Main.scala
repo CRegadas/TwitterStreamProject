@@ -1,12 +1,12 @@
-package hello
+package Main
 
 import Collect.TwitterStream
+import Mock.MockTwitterStream
 import Processing.{Spark, FilterControl}
 import Services.{KafkaService, Redis}
 
 
 import java.util.Properties
-import hello.mock.MockTwitterStream
 import kafka.javaapi.producer.Producer
 import kafka.producer.ProducerConfig
 import org.apache.spark.Logging
@@ -29,8 +29,8 @@ object Main extends App with Logging
         .setJSONStoreEnabled(true)
         .build
 
-        val stream: twitter4j.TwitterStream = new TwitterStreamFactory(config).getInstance()
-        //val stream = new MockTwitterStream
+        //val stream: twitter4j.TwitterStream = new TwitterStreamFactory(config).getInstance()
+        val stream = new MockTwitterStream
 
         /** Zookeeper connection properties **/
         val props = new Properties
@@ -43,14 +43,14 @@ object Main extends App with Logging
         val producer = new Producer[String, Array[Byte]](pconfig)
 
         /**  **/
-        println("MAIN_service kafka")
+        println("------------------------------------------MAIN_service kafka")
         val serviceK = new KafkaService(producer,topic)
-        new TwitterStream(stream,serviceK)
+        val serviceR = new Redis
+        new TwitterStream(stream,serviceK,serviceR)
 
         /** ask to filter the data **/
-        println("MAIN_filter control")
+        println("------------------------------------------MAIN_filter control")
         val process = new Spark
-        val serviceR = new Redis
         val filter = new FilterControl[HashtagEntity](process, serviceR)
         filter.filterByHashTags()
 

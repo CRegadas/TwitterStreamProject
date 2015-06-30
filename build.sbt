@@ -8,8 +8,7 @@ version := "1.0"
 sbtVersion := "0.13.0"
 
 resolvers ++= Seq(
-  "Apache Staging" at "https://repository.apache.org/content/groups/staging/",
-  "rediscala" at "http://dl.bintray.com/etaty/maven"
+  "Apache Staging" at "https://repository.apache.org/content/groups/staging/"
 )
 
 libraryDependencies ++= Seq(
@@ -19,7 +18,7 @@ libraryDependencies ++= Seq(
     exclude("com.sun.jmx", "jmxri")
     exclude("org.slf4j", "slf4j-simple"),
   "org.twitter4j" % "twitter4j-stream" % "4.0.3",
-  "com.etaty.rediscala" %% "rediscala" % "1.4.0",
+  "net.debasishg" %% "redisclient" % "3.0",
   "com.datastax.spark" %% "spark-cassandra-connector" % "1.3.0-M1",
   "junit" % "junit" % "4.12" % "test",
   "org.apache.spark" %% "spark-core" % "1.3.0" % "provided",

@@ -9,11 +9,14 @@ class FilterControl[T](process: IProcess[DStream[(T, String)]], service: IServic
   /** Collect hashtags and store in redis **/
   def filterByHashTags() =
   {
-    var t = Array[(T, String)]()
-    val hashtags: DStream[(T, String)] = process.collect()
 
-    hashtags.foreachRDD(rdd =>{ t = rdd.collect()})
-    service.writeHashtags(t)
+  	println("------------------------------------------FILTER_CONTROL")
+
+    //var t = Array[(T, String)]()
+    val hashtags: DStream[(T, String)] = process.collect()
+    println("HASHTAGS no FILTER_CONTROL recolhidas do Kafka: "+hashtags.print())
+    
+	hashtags.foreachRDD( rdd => service.writeHashtags(rdd.collect()) )
 
     process.start()
   }

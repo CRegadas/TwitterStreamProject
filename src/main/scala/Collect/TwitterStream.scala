@@ -1,15 +1,17 @@
 package Collect
 
 import Services.IServices
-import hello.mock.MockTwitterStream
+import Mock.MockTwitterStream
 import twitter4j._
 
-class TwitterStream(stream : twitter4j.TwitterStream, service: IServices[HashtagEntity]) {
+class TwitterStream(stream : MockTwitterStream, kafkaService: IServices[HashtagEntity], redisService: IServices[HashtagEntity]) {
 
   class OnTweetPosted extends StatusListener {
 
     override def onStatus(status: Status): Unit = {
-      service.writeStatus(status)
+      println("STATUS: "+status.getText)
+      kafkaService.writeStatus(status)
+      redisService.writeStatus(status)
     }
 
     override def onException(ex: Exception): Unit = throw ex
