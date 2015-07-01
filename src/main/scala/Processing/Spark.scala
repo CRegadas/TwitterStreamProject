@@ -15,7 +15,7 @@ class Spark extends IProcess[DStream[(HashtagEntity, String)]] with Logging{
    // val conf = new SparkConf().setAppName("Teste")                       
                                 //.setMaster("spark://macbookarura.lan:7077")                          
                                 //.setJars(Seq("/Users/sindz/MEI/Dissertacao/workspace/diriri/target/scala-2.10/hello-assembly-1.0.jar"))
-  val ssc = new StreamingContext(new SparkConf(), Seconds(2))
+  val ssc = new StreamingContext(new SparkConf(), Seconds(5))
   //var topHashtags = List[(String, Int)]()
 
   def init() : DStream[Array[Byte]] =

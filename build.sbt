@@ -21,9 +21,9 @@ libraryDependencies ++= Seq(
   "net.debasishg" %% "redisclient" % "3.0",
   "com.datastax.spark" %% "spark-cassandra-connector" % "1.3.0-M1",
   "junit" % "junit" % "4.12" % "test",
-  "org.apache.spark" %% "spark-core" % "1.3.0" % "provided",
-  "org.apache.spark" %% "spark-streaming" % "1.3.0",
-  "org.apache.spark" %% "spark-streaming-kafka" % "1.3.0",
+  "org.apache.spark" %% "spark-core" % "1.4.0" % "provided",
+  "org.apache.spark" %% "spark-streaming" % "1.4.0",
+  "org.apache.spark" %% "spark-streaming-kafka" % "1.4.0",
   "org.apache.spark" % "spark-streaming-twitter_2.10" % "1.1.0"
 )
 

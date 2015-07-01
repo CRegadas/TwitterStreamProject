@@ -1,7 +1,4 @@
 ➜  spark-1.4.0-bin-hadoop2.6  ./bin/spark-submit --class "Main.Main" --master spark://macbookarura.lan:7077 /Users/sindz/MEI/Dissertacao/TwitterStreamProject/target/scala-2.10/hello-assembly-1.0.jar
-
-
-
 log4j:WARN No appenders could be found for logger (kafka.utils.VerifiableProperties).
 log4j:WARN Please initialize the log4j system properly.
 log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
@@ -14,533 +11,666 @@ KafkaService_WRITE_STATUS
 --------------------------------------A GUARDAR USER NO REDIS
 ------------------------------------------MAIN_filter control
 Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
-15/06/30 23:11:01 INFO SparkContext: Running Spark version 1.4.0
-2015-06-30 23:11:01.807 java[71026:2780522] Unable to load realm info from SCDynamicStore
-15/06/30 23:11:01 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-15/06/30 23:11:02 INFO SecurityManager: Changing view acls to: sindz
-15/06/30 23:11:02 INFO SecurityManager: Changing modify acls to: sindz
-15/06/30 23:11:02 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(sindz); users with modify permissions: Set(sindz)
-15/06/30 23:11:02 INFO Slf4jLogger: Slf4jLogger started
-15/06/30 23:11:02 INFO Remoting: Starting remoting
-15/06/30 23:11:02 INFO Remoting: Remoting started; listening on addresses :[akka.tcp://sparkDriver@192.168.1.101:61003]
-15/06/30 23:11:02 INFO Utils: Successfully started service 'sparkDriver' on port 61003.
-15/06/30 23:11:02 INFO SparkEnv: Registering MapOutputTracker
-15/06/30 23:11:02 INFO SparkEnv: Registering BlockManagerMaster
-15/06/30 23:11:02 INFO DiskBlockManager: Created local directory at /private/var/folders/cq/rjz7hsgn2w3bjqvvpxglsvfh0000gn/T/spark-72b09a51-f959-4312-a811-59cf88e50f6b/blockmgr-fa5271d6-2b34-4072-8835-d39cf039d0dc
-15/06/30 23:11:02 INFO MemoryStore: MemoryStore started with capacity 265.4 MB
-15/06/30 23:11:03 INFO HttpFileServer: HTTP File server directory is /private/var/folders/cq/rjz7hsgn2w3bjqvvpxglsvfh0000gn/T/spark-72b09a51-f959-4312-a811-59cf88e50f6b/httpd-29fa62f5-03bf-4764-a3a8-16529bf3a49c
-15/06/30 23:11:03 INFO HttpServer: Starting HTTP Server
-15/06/30 23:11:03 INFO Utils: Successfully started service 'HTTP file server' on port 61005.
-15/06/30 23:11:03 INFO SparkEnv: Registering OutputCommitCoordinator
-15/06/30 23:11:03 INFO Utils: Successfully started service 'SparkUI' on port 4040.
-15/06/30 23:11:03 INFO SparkUI: Started SparkUI at http://192.168.1.101:4040
-15/06/30 23:11:03 INFO SparkContext: Added JAR file:/Users/sindz/MEI/Dissertacao/TwitterStreamProject/target/scala-2.10/hello-assembly-1.0.jar at http://192.168.1.101:61005/jars/hello-assembly-1.0.jar with timestamp 1435702263497
-15/06/30 23:11:03 INFO AppClient$ClientActor: Connecting to master akka.tcp://sparkMaster@macbookarura.lan:7077/user/Master...
-15/06/30 23:11:03 INFO SparkDeploySchedulerBackend: Connected to Spark cluster with app ID app-20150630231103-0024
-15/06/30 23:11:04 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 61008.
-15/06/30 23:11:04 INFO NettyBlockTransferService: Server created on 61008
-15/06/30 23:11:04 INFO BlockManagerMaster: Trying to register BlockManager
-15/06/30 23:11:04 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.1.101:61008 with 265.4 MB RAM, BlockManagerId(driver, 192.168.1.101, 61008)
-15/06/30 23:11:04 INFO BlockManagerMaster: Registered BlockManager
-15/06/30 23:11:04 INFO SparkDeploySchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+15/07/01 01:06:13 INFO SparkContext: Running Spark version 1.4.0
+2015-07-01 01:06:13.984 java[74649:2929826] Unable to load realm info from SCDynamicStore
+15/07/01 01:06:14 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+15/07/01 01:06:14 INFO SecurityManager: Changing view acls to: sindz
+15/07/01 01:06:14 INFO SecurityManager: Changing modify acls to: sindz
+15/07/01 01:06:14 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(sindz); users with modify permissions: Set(sindz)
+15/07/01 01:06:14 INFO Slf4jLogger: Slf4jLogger started
+15/07/01 01:06:14 INFO Remoting: Starting remoting
+15/07/01 01:06:14 INFO Remoting: Remoting started; listening on addresses :[akka.tcp://sparkDriver@192.168.1.101:57144]
+15/07/01 01:06:14 INFO Utils: Successfully started service 'sparkDriver' on port 57144.
+15/07/01 01:06:14 INFO SparkEnv: Registering MapOutputTracker
+15/07/01 01:06:14 INFO SparkEnv: Registering BlockManagerMaster
+15/07/01 01:06:14 INFO DiskBlockManager: Created local directory at /private/var/folders/cq/rjz7hsgn2w3bjqvvpxglsvfh0000gn/T/spark-d170c2a6-d8e5-4d62-81d0-333107b7a50b/blockmgr-ecb0d3ca-c6aa-4ead-89eb-a1f47597d52b
+15/07/01 01:06:14 INFO MemoryStore: MemoryStore started with capacity 265.4 MB
+15/07/01 01:06:14 INFO HttpFileServer: HTTP File server directory is /private/var/folders/cq/rjz7hsgn2w3bjqvvpxglsvfh0000gn/T/spark-d170c2a6-d8e5-4d62-81d0-333107b7a50b/httpd-4f706859-8c0b-4f7c-8c5a-73f0b1e7a9bf
+15/07/01 01:06:14 INFO HttpServer: Starting HTTP Server
+15/07/01 01:06:14 INFO Utils: Successfully started service 'HTTP file server' on port 57145.
+15/07/01 01:06:14 INFO SparkEnv: Registering OutputCommitCoordinator
+15/07/01 01:06:14 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+15/07/01 01:06:14 INFO SparkUI: Started SparkUI at http://192.168.1.101:4040
+15/07/01 01:06:15 INFO SparkContext: Added JAR file:/Users/sindz/MEI/Dissertacao/TwitterStreamProject/target/scala-2.10/hello-assembly-1.0.jar at http://192.168.1.101:57145/jars/hello-assembly-1.0.jar with timestamp 1435709175218
+15/07/01 01:06:15 INFO AppClient$ClientActor: Connecting to master akka.tcp://sparkMaster@macbookarura.lan:7077/user/Master...
+15/07/01 01:06:15 INFO SparkDeploySchedulerBackend: Connected to Spark cluster with app ID app-20150701010615-0005
+15/07/01 01:06:15 INFO AppClient$ClientActor: Executor added: app-20150701010615-0005/0 on worker-20150630232707-192.168.1.101-62863 (192.168.1.101:62863) with 8 cores
+15/07/01 01:06:15 INFO SparkDeploySchedulerBackend: Granted executor ID app-20150701010615-0005/0 on hostPort 192.168.1.101:62863 with 8 cores, 512.0 MB RAM
+15/07/01 01:06:15 INFO AppClient$ClientActor: Executor updated: app-20150701010615-0005/0 is now LOADING
+15/07/01 01:06:15 INFO AppClient$ClientActor: Executor updated: app-20150701010615-0005/0 is now RUNNING
+15/07/01 01:06:15 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 57149.
+15/07/01 01:06:15 INFO NettyBlockTransferService: Server created on 57149
+15/07/01 01:06:15 INFO BlockManagerMaster: Trying to register BlockManager
+15/07/01 01:06:15 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.1.101:57149 with 265.4 MB RAM, BlockManagerId(driver, 192.168.1.101, 57149)
+15/07/01 01:06:15 INFO BlockManagerMaster: Registered BlockManager
+15/07/01 01:06:15 INFO SparkDeploySchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
 ------------------------------------------FILTER_CONTROL
 ------------------------------------------SPARK_COLLECT
 KAFKA_STREAM: ()
 ------------------------------------------TESTE: ()
 HASHTAGS no FILTER_CONTROL recolhidas do Kafka: ()
-15/06/30 23:11:04 INFO ReceiverTracker: ReceiverTracker started
-15/06/30 23:11:04 INFO ForEachDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO KafkaInputDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO KafkaInputDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO KafkaInputDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO KafkaInputDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO KafkaInputDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO KafkaInputDStream: Initialized and validated org.apache.spark.streaming.kafka.KafkaInputDStream@f5ec40
-15/06/30 23:11:04 INFO ForEachDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO ForEachDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO ForEachDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO ForEachDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@1caa4160
-15/06/30 23:11:04 INFO ForEachDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO MappedDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO KafkaInputDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO KafkaInputDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO KafkaInputDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO KafkaInputDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO KafkaInputDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO KafkaInputDStream: Initialized and validated org.apache.spark.streaming.kafka.KafkaInputDStream@f5ec40
-15/06/30 23:11:04 INFO MappedDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO MappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO MappedDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO MappedDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO MappedDStream: Initialized and validated org.apache.spark.streaming.dstream.MappedDStream@7ca03522
-15/06/30 23:11:04 INFO ForEachDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO ForEachDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO ForEachDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO ForEachDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@60f8df02
-15/06/30 23:11:04 INFO ForEachDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO FlatMappedDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO MappedDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO KafkaInputDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO KafkaInputDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO KafkaInputDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO KafkaInputDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO KafkaInputDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO KafkaInputDStream: Initialized and validated org.apache.spark.streaming.kafka.KafkaInputDStream@f5ec40
-15/06/30 23:11:04 INFO MappedDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO MappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO MappedDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO MappedDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO MappedDStream: Initialized and validated org.apache.spark.streaming.dstream.MappedDStream@7ca03522
-15/06/30 23:11:04 INFO FlatMappedDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO FlatMappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO FlatMappedDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO FlatMappedDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO FlatMappedDStream: Initialized and validated org.apache.spark.streaming.dstream.FlatMappedDStream@379d8fc2
-15/06/30 23:11:04 INFO ForEachDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO ForEachDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO ForEachDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO ForEachDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@2ed92da1
-15/06/30 23:11:04 INFO ForEachDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO FlatMappedDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO MappedDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO KafkaInputDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO KafkaInputDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO KafkaInputDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO KafkaInputDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO KafkaInputDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO KafkaInputDStream: Initialized and validated org.apache.spark.streaming.kafka.KafkaInputDStream@f5ec40
-15/06/30 23:11:04 INFO MappedDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO MappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO MappedDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO MappedDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO MappedDStream: Initialized and validated org.apache.spark.streaming.dstream.MappedDStream@7ca03522
-15/06/30 23:11:04 INFO FlatMappedDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO FlatMappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO FlatMappedDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO FlatMappedDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO FlatMappedDStream: Initialized and validated org.apache.spark.streaming.dstream.FlatMappedDStream@379d8fc2
-15/06/30 23:11:04 INFO ForEachDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO ForEachDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO ForEachDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO ForEachDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@482aa91a
-15/06/30 23:11:04 INFO ForEachDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO FlatMappedDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO MappedDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO KafkaInputDStream: metadataCleanupDelay = -1
-15/06/30 23:11:04 INFO KafkaInputDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO KafkaInputDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO KafkaInputDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO KafkaInputDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO KafkaInputDStream: Initialized and validated org.apache.spark.streaming.kafka.KafkaInputDStream@f5ec40
-15/06/30 23:11:04 INFO MappedDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO MappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO MappedDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO MappedDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO MappedDStream: Initialized and validated org.apache.spark.streaming.dstream.MappedDStream@7ca03522
-15/06/30 23:11:04 INFO FlatMappedDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO FlatMappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO FlatMappedDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO FlatMappedDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO FlatMappedDStream: Initialized and validated org.apache.spark.streaming.dstream.FlatMappedDStream@379d8fc2
-15/06/30 23:11:04 INFO ForEachDStream: Slide time = 2000 ms
-15/06/30 23:11:04 INFO ForEachDStream: Storage level = StorageLevel(false, false, false, false, 1)
-15/06/30 23:11:04 INFO ForEachDStream: Checkpoint interval = null
-15/06/30 23:11:04 INFO ForEachDStream: Remember duration = 2000 ms
-15/06/30 23:11:04 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@5c241a51
-15/06/30 23:11:04 INFO SparkContext: Starting job: start at Spark.scala:40
-15/06/30 23:11:04 INFO RecurringTimer: Started timer for JobGenerator at time 1435702266000
-15/06/30 23:11:04 INFO JobGenerator: Started JobGenerator at 1435702266000 ms
-15/06/30 23:11:04 INFO JobScheduler: Started JobScheduler
-15/06/30 23:11:04 INFO StreamingContext: StreamingContext started
-15/06/30 23:11:04 INFO DAGScheduler: Registering RDD 2 (start at Spark.scala:40)
-15/06/30 23:11:04 INFO DAGScheduler: Got job 0 (start at Spark.scala:40) with 20 output partitions (allowLocal=false)
-15/06/30 23:11:04 INFO DAGScheduler: Final stage: ResultStage 1(start at Spark.scala:40)
-15/06/30 23:11:04 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 0)
-15/06/30 23:11:04 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 0)
-15/06/30 23:11:04 INFO DAGScheduler: Submitting ShuffleMapStage 0 (MapPartitionsRDD[2] at start at Spark.scala:40), which has no missing parents
-15/06/30 23:11:04 INFO MemoryStore: ensureFreeSpace(2872) called with curMem=0, maxMem=278302556
-15/06/30 23:11:04 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 2.8 KB, free 265.4 MB)
-15/06/30 23:11:04 INFO MemoryStore: ensureFreeSpace(1695) called with curMem=2872, maxMem=278302556
-15/06/30 23:11:04 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 1695.0 B, free 265.4 MB)
-15/06/30 23:11:04 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 192.168.1.101:61008 (size: 1695.0 B, free: 265.4 MB)
-15/06/30 23:11:04 INFO SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:874
-15/06/30 23:11:04 INFO DAGScheduler: Submitting 50 missing tasks from ShuffleMapStage 0 (MapPartitionsRDD[2] at start at Spark.scala:40)
-15/06/30 23:11:04 INFO TaskSchedulerImpl: Adding task set 0.0 with 50 tasks
-15/06/30 23:11:06 INFO JobScheduler: Added jobs for time 1435702266000 ms
-15/06/30 23:11:06 INFO JobScheduler: Starting job streaming job 1435702266000 ms.0 from job set of time 1435702266000 ms
-15/06/30 23:11:06 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
-15/06/30 23:11:06 INFO DAGScheduler: Job 1 finished: foreachRDD at Spark.scala:34, took 0.001264 s
-15/06/30 23:11:06 INFO JobScheduler: Finished job streaming job 1435702266000 ms.0 from job set of time 1435702266000 ms
-15/06/30 23:11:06 INFO JobScheduler: Starting job streaming job 1435702266000 ms.1 from job set of time 1435702266000 ms
+15/07/01 01:06:15 INFO ReceiverTracker: ReceiverTracker started
+15/07/01 01:06:15 INFO ForEachDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO KafkaInputDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO KafkaInputDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO KafkaInputDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO KafkaInputDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO KafkaInputDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO KafkaInputDStream: Initialized and validated org.apache.spark.streaming.kafka.KafkaInputDStream@21c0aa98
+15/07/01 01:06:15 INFO ForEachDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO ForEachDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO ForEachDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO ForEachDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@76dcbff5
+15/07/01 01:06:15 INFO ForEachDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO MappedDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO KafkaInputDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO KafkaInputDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO KafkaInputDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO KafkaInputDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO KafkaInputDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO KafkaInputDStream: Initialized and validated org.apache.spark.streaming.kafka.KafkaInputDStream@21c0aa98
+15/07/01 01:06:15 INFO MappedDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO MappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO MappedDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO MappedDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO MappedDStream: Initialized and validated org.apache.spark.streaming.dstream.MappedDStream@98a0bfa
+15/07/01 01:06:15 INFO ForEachDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO ForEachDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO ForEachDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO ForEachDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@46184efa
+15/07/01 01:06:15 INFO ForEachDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO FlatMappedDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO MappedDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO KafkaInputDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO KafkaInputDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO KafkaInputDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO KafkaInputDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO KafkaInputDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO KafkaInputDStream: Initialized and validated org.apache.spark.streaming.kafka.KafkaInputDStream@21c0aa98
+15/07/01 01:06:15 INFO MappedDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO MappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO MappedDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO MappedDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO MappedDStream: Initialized and validated org.apache.spark.streaming.dstream.MappedDStream@98a0bfa
+15/07/01 01:06:15 INFO FlatMappedDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO FlatMappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO FlatMappedDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO FlatMappedDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO FlatMappedDStream: Initialized and validated org.apache.spark.streaming.dstream.FlatMappedDStream@124cdc17
+15/07/01 01:06:15 INFO ForEachDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO ForEachDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO ForEachDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO ForEachDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@11daa417
+15/07/01 01:06:15 INFO ForEachDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO FlatMappedDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO MappedDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO KafkaInputDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO KafkaInputDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO KafkaInputDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO KafkaInputDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO KafkaInputDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO KafkaInputDStream: Initialized and validated org.apache.spark.streaming.kafka.KafkaInputDStream@21c0aa98
+15/07/01 01:06:15 INFO MappedDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO MappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO MappedDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO MappedDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO MappedDStream: Initialized and validated org.apache.spark.streaming.dstream.MappedDStream@98a0bfa
+15/07/01 01:06:15 INFO FlatMappedDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO FlatMappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO FlatMappedDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO FlatMappedDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO FlatMappedDStream: Initialized and validated org.apache.spark.streaming.dstream.FlatMappedDStream@124cdc17
+15/07/01 01:06:15 INFO ForEachDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO ForEachDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO ForEachDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO ForEachDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@544c65e8
+15/07/01 01:06:15 INFO ForEachDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO FlatMappedDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO MappedDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO KafkaInputDStream: metadataCleanupDelay = -1
+15/07/01 01:06:15 INFO KafkaInputDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO KafkaInputDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO KafkaInputDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO KafkaInputDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO KafkaInputDStream: Initialized and validated org.apache.spark.streaming.kafka.KafkaInputDStream@21c0aa98
+15/07/01 01:06:15 INFO MappedDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO MappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO MappedDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO MappedDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO MappedDStream: Initialized and validated org.apache.spark.streaming.dstream.MappedDStream@98a0bfa
+15/07/01 01:06:15 INFO FlatMappedDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO FlatMappedDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO FlatMappedDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO FlatMappedDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO FlatMappedDStream: Initialized and validated org.apache.spark.streaming.dstream.FlatMappedDStream@124cdc17
+15/07/01 01:06:15 INFO ForEachDStream: Slide time = 5000 ms
+15/07/01 01:06:15 INFO ForEachDStream: Storage level = StorageLevel(false, false, false, false, 1)
+15/07/01 01:06:15 INFO ForEachDStream: Checkpoint interval = null
+15/07/01 01:06:15 INFO ForEachDStream: Remember duration = 5000 ms
+15/07/01 01:06:15 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@3fdff708
+15/07/01 01:06:15 INFO RecurringTimer: Started timer for JobGenerator at time 1435709180000
+15/07/01 01:06:15 INFO SparkContext: Starting job: start at Spark.scala:40
+15/07/01 01:06:15 INFO JobGenerator: Started JobGenerator at 1435709180000 ms
+15/07/01 01:06:15 INFO JobScheduler: Started JobScheduler
+15/07/01 01:06:15 INFO StreamingContext: StreamingContext started
+15/07/01 01:06:15 INFO DAGScheduler: Registering RDD 2 (start at Spark.scala:40)
+15/07/01 01:06:15 INFO DAGScheduler: Got job 0 (start at Spark.scala:40) with 20 output partitions (allowLocal=false)
+15/07/01 01:06:15 INFO DAGScheduler: Final stage: ResultStage 1(start at Spark.scala:40)
+15/07/01 01:06:15 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 0)
+15/07/01 01:06:15 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 0)
+15/07/01 01:06:15 INFO DAGScheduler: Submitting ShuffleMapStage 0 (MapPartitionsRDD[2] at start at Spark.scala:40), which has no missing parents
+15/07/01 01:06:16 INFO MemoryStore: ensureFreeSpace(2872) called with curMem=0, maxMem=278302556
+15/07/01 01:06:16 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 2.8 KB, free 265.4 MB)
+15/07/01 01:06:16 INFO MemoryStore: ensureFreeSpace(1695) called with curMem=2872, maxMem=278302556
+15/07/01 01:06:16 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 1695.0 B, free 265.4 MB)
+15/07/01 01:06:16 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 192.168.1.101:57149 (size: 1695.0 B, free: 265.4 MB)
+15/07/01 01:06:16 INFO SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:874
+15/07/01 01:06:16 INFO DAGScheduler: Submitting 50 missing tasks from ShuffleMapStage 0 (MapPartitionsRDD[2] at start at Spark.scala:40)
+15/07/01 01:06:16 INFO TaskSchedulerImpl: Adding task set 0.0 with 50 tasks
+15/07/01 01:06:17 INFO SparkDeploySchedulerBackend: Registered executor: AkkaRpcEndpointRef(Actor[akka.tcp://sparkExecutor@192.168.1.101:57154/user/Executor#-195157726]) with ID 0
+15/07/01 01:06:17 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:17 INFO TaskSetManager: Starting task 1.0 in stage 0.0 (TID 1, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:17 INFO TaskSetManager: Starting task 2.0 in stage 0.0 (TID 2, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:17 INFO TaskSetManager: Starting task 3.0 in stage 0.0 (TID 3, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:17 INFO TaskSetManager: Starting task 4.0 in stage 0.0 (TID 4, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:17 INFO TaskSetManager: Starting task 5.0 in stage 0.0 (TID 5, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:17 INFO TaskSetManager: Starting task 6.0 in stage 0.0 (TID 6, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:17 INFO TaskSetManager: Starting task 7.0 in stage 0.0 (TID 7, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:17 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.1.101:57157 with 265.4 MB RAM, BlockManagerId(0, 192.168.1.101, 57157)
+15/07/01 01:06:18 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 192.168.1.101:57157 (size: 1695.0 B, free: 265.4 MB)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 8.0 in stage 0.0 (TID 8, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 9.0 in stage 0.0 (TID 9, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 10.0 in stage 0.0 (TID 10, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 11.0 in stage 0.0 (TID 11, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 12.0 in stage 0.0 (TID 12, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 13.0 in stage 0.0 (TID 13, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 14.0 in stage 0.0 (TID 14, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 15.0 in stage 0.0 (TID 15, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 4.0 in stage 0.0 (TID 4) in 1045 ms on 192.168.1.101 (1/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 1.0 in stage 0.0 (TID 1) in 1051 ms on 192.168.1.101 (2/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 16.0 in stage 0.0 (TID 16, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 7.0 in stage 0.0 (TID 7) in 1049 ms on 192.168.1.101 (3/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 2.0 in stage 0.0 (TID 2) in 1053 ms on 192.168.1.101 (4/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 6.0 in stage 0.0 (TID 6) in 1052 ms on 192.168.1.101 (5/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 1069 ms on 192.168.1.101 (6/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 17.0 in stage 0.0 (TID 17, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 18.0 in stage 0.0 (TID 18, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 8.0 in stage 0.0 (TID 8) in 32 ms on 192.168.1.101 (7/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 5.0 in stage 0.0 (TID 5) in 1059 ms on 192.168.1.101 (8/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 3.0 in stage 0.0 (TID 3) in 1061 ms on 192.168.1.101 (9/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 9.0 in stage 0.0 (TID 9) in 33 ms on 192.168.1.101 (10/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 10.0 in stage 0.0 (TID 10) in 31 ms on 192.168.1.101 (11/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 19.0 in stage 0.0 (TID 19, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 11.0 in stage 0.0 (TID 11) in 34 ms on 192.168.1.101 (12/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 20.0 in stage 0.0 (TID 20, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 12.0 in stage 0.0 (TID 12) in 34 ms on 192.168.1.101 (13/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 21.0 in stage 0.0 (TID 21, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 13.0 in stage 0.0 (TID 13) in 36 ms on 192.168.1.101 (14/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 22.0 in stage 0.0 (TID 22, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 15.0 in stage 0.0 (TID 15) in 37 ms on 192.168.1.101 (15/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 23.0 in stage 0.0 (TID 23, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 14.0 in stage 0.0 (TID 14) in 45 ms on 192.168.1.101 (16/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 24.0 in stage 0.0 (TID 24, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 25.0 in stage 0.0 (TID 25, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 26.0 in stage 0.0 (TID 26, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 18.0 in stage 0.0 (TID 18) in 34 ms on 192.168.1.101 (17/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 16.0 in stage 0.0 (TID 16) in 42 ms on 192.168.1.101 (18/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 17.0 in stage 0.0 (TID 17) in 37 ms on 192.168.1.101 (19/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 27.0 in stage 0.0 (TID 27, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 19.0 in stage 0.0 (TID 19) in 31 ms on 192.168.1.101 (20/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 28.0 in stage 0.0 (TID 28, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 20.0 in stage 0.0 (TID 20) in 33 ms on 192.168.1.101 (21/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 29.0 in stage 0.0 (TID 29, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 30.0 in stage 0.0 (TID 30, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 21.0 in stage 0.0 (TID 21) in 34 ms on 192.168.1.101 (22/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 22.0 in stage 0.0 (TID 22) in 30 ms on 192.168.1.101 (23/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 31.0 in stage 0.0 (TID 31, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 23.0 in stage 0.0 (TID 23) in 36 ms on 192.168.1.101 (24/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 32.0 in stage 0.0 (TID 32, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 25.0 in stage 0.0 (TID 25) in 34 ms on 192.168.1.101 (25/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 33.0 in stage 0.0 (TID 33, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 24.0 in stage 0.0 (TID 24) in 38 ms on 192.168.1.101 (26/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 34.0 in stage 0.0 (TID 34, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 27.0 in stage 0.0 (TID 27) in 31 ms on 192.168.1.101 (27/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 35.0 in stage 0.0 (TID 35, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 29.0 in stage 0.0 (TID 29) in 29 ms on 192.168.1.101 (28/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 36.0 in stage 0.0 (TID 36, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 30.0 in stage 0.0 (TID 30) in 31 ms on 192.168.1.101 (29/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 37.0 in stage 0.0 (TID 37, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 28.0 in stage 0.0 (TID 28) in 37 ms on 192.168.1.101 (30/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 38.0 in stage 0.0 (TID 38, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 31.0 in stage 0.0 (TID 31) in 28 ms on 192.168.1.101 (31/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 39.0 in stage 0.0 (TID 39, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 26.0 in stage 0.0 (TID 26) in 56 ms on 192.168.1.101 (32/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 40.0 in stage 0.0 (TID 40, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 32.0 in stage 0.0 (TID 32) in 29 ms on 192.168.1.101 (33/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 41.0 in stage 0.0 (TID 41, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 33.0 in stage 0.0 (TID 33) in 29 ms on 192.168.1.101 (34/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 42.0 in stage 0.0 (TID 42, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 34.0 in stage 0.0 (TID 34) in 36 ms on 192.168.1.101 (35/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 43.0 in stage 0.0 (TID 43, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 35.0 in stage 0.0 (TID 35) in 34 ms on 192.168.1.101 (36/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 44.0 in stage 0.0 (TID 44, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 36.0 in stage 0.0 (TID 36) in 35 ms on 192.168.1.101 (37/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 45.0 in stage 0.0 (TID 45, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 37.0 in stage 0.0 (TID 37) in 39 ms on 192.168.1.101 (38/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 46.0 in stage 0.0 (TID 46, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 38.0 in stage 0.0 (TID 38) in 42 ms on 192.168.1.101 (39/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 47.0 in stage 0.0 (TID 47, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 39.0 in stage 0.0 (TID 39) in 42 ms on 192.168.1.101 (40/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 48.0 in stage 0.0 (TID 48, 192.168.1.101, PROCESS_LOCAL, 1422 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 40.0 in stage 0.0 (TID 40) in 41 ms on 192.168.1.101 (41/50)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 49.0 in stage 0.0 (TID 49, 192.168.1.101, PROCESS_LOCAL, 1479 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 41.0 in stage 0.0 (TID 41) in 41 ms on 192.168.1.101 (42/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 42.0 in stage 0.0 (TID 42) in 41 ms on 192.168.1.101 (43/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 43.0 in stage 0.0 (TID 43) in 37 ms on 192.168.1.101 (44/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 44.0 in stage 0.0 (TID 44) in 35 ms on 192.168.1.101 (45/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 45.0 in stage 0.0 (TID 45) in 31 ms on 192.168.1.101 (46/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 46.0 in stage 0.0 (TID 46) in 30 ms on 192.168.1.101 (47/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 47.0 in stage 0.0 (TID 47) in 30 ms on 192.168.1.101 (48/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 48.0 in stage 0.0 (TID 48) in 29 ms on 192.168.1.101 (49/50)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 49.0 in stage 0.0 (TID 49) in 29 ms on 192.168.1.101 (50/50)
+15/07/01 01:06:18 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool
+15/07/01 01:06:18 INFO DAGScheduler: ShuffleMapStage 0 (start at Spark.scala:40) finished in 2.561 s
+15/07/01 01:06:18 INFO DAGScheduler: looking for newly runnable stages
+15/07/01 01:06:18 INFO DAGScheduler: running: Set()
+15/07/01 01:06:18 INFO DAGScheduler: waiting: Set(ResultStage 1)
+15/07/01 01:06:18 INFO DAGScheduler: failed: Set()
+15/07/01 01:06:18 INFO DAGScheduler: Missing parents for ResultStage 1: List()
+15/07/01 01:06:18 INFO DAGScheduler: Submitting ResultStage 1 (ShuffledRDD[3] at start at Spark.scala:40), which is now runnable
+15/07/01 01:06:18 INFO MemoryStore: ensureFreeSpace(2392) called with curMem=4567, maxMem=278302556
+15/07/01 01:06:18 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 2.3 KB, free 265.4 MB)
+15/07/01 01:06:18 INFO MemoryStore: ensureFreeSpace(1432) called with curMem=6959, maxMem=278302556
+15/07/01 01:06:18 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 1432.0 B, free 265.4 MB)
+15/07/01 01:06:18 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 192.168.1.101:57149 (size: 1432.0 B, free: 265.4 MB)
+15/07/01 01:06:18 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:874
+15/07/01 01:06:18 INFO DAGScheduler: Submitting 20 missing tasks from ResultStage 1 (ShuffledRDD[3] at start at Spark.scala:40)
+15/07/01 01:06:18 INFO TaskSchedulerImpl: Adding task set 1.0 with 20 tasks
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 50, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 1.0 in stage 1.0 (TID 51, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 2.0 in stage 1.0 (TID 52, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 3.0 in stage 1.0 (TID 53, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 4.0 in stage 1.0 (TID 54, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 5.0 in stage 1.0 (TID 55, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 6.0 in stage 1.0 (TID 56, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 7.0 in stage 1.0 (TID 57, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 192.168.1.101:57157 (size: 1432.0 B, free: 265.4 MB)
+15/07/01 01:06:18 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 0 to 192.168.1.101:57154
+15/07/01 01:06:18 INFO MapOutputTrackerMaster: Size of output statuses for shuffle 0 is 267 bytes
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 8.0 in stage 1.0 (TID 58, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 9.0 in stage 1.0 (TID 59, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 7.0 in stage 1.0 (TID 57) in 100 ms on 192.168.1.101 (1/20)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 6.0 in stage 1.0 (TID 56) in 101 ms on 192.168.1.101 (2/20)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 10.0 in stage 1.0 (TID 60, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 5.0 in stage 1.0 (TID 55) in 104 ms on 192.168.1.101 (3/20)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 11.0 in stage 1.0 (TID 61, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 1.0 in stage 1.0 (TID 51) in 110 ms on 192.168.1.101 (4/20)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 12.0 in stage 1.0 (TID 62, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 2.0 in stage 1.0 (TID 52) in 115 ms on 192.168.1.101 (5/20)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 13.0 in stage 1.0 (TID 63, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 4.0 in stage 1.0 (TID 54) in 118 ms on 192.168.1.101 (6/20)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 14.0 in stage 1.0 (TID 64, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 3.0 in stage 1.0 (TID 53) in 124 ms on 192.168.1.101 (7/20)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 15.0 in stage 1.0 (TID 65, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 50) in 129 ms on 192.168.1.101 (8/20)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 16.0 in stage 1.0 (TID 66, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 8.0 in stage 1.0 (TID 58) in 44 ms on 192.168.1.101 (9/20)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 17.0 in stage 1.0 (TID 67, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 9.0 in stage 1.0 (TID 59) in 47 ms on 192.168.1.101 (10/20)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 18.0 in stage 1.0 (TID 68, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 10.0 in stage 1.0 (TID 60) in 49 ms on 192.168.1.101 (11/20)
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 19.0 in stage 1.0 (TID 69, 192.168.1.101, PROCESS_LOCAL, 1229 bytes)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 11.0 in stage 1.0 (TID 61) in 54 ms on 192.168.1.101 (12/20)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 12.0 in stage 1.0 (TID 62) in 51 ms on 192.168.1.101 (13/20)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 14.0 in stage 1.0 (TID 64) in 46 ms on 192.168.1.101 (14/20)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 15.0 in stage 1.0 (TID 65) in 47 ms on 192.168.1.101 (15/20)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 13.0 in stage 1.0 (TID 63) in 58 ms on 192.168.1.101 (16/20)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 16.0 in stage 1.0 (TID 66) in 34 ms on 192.168.1.101 (17/20)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 17.0 in stage 1.0 (TID 67) in 32 ms on 192.168.1.101 (18/20)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 18.0 in stage 1.0 (TID 68) in 30 ms on 192.168.1.101 (19/20)
+15/07/01 01:06:18 INFO TaskSetManager: Finished task 19.0 in stage 1.0 (TID 69) in 25 ms on 192.168.1.101 (20/20)
+15/07/01 01:06:18 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool
+15/07/01 01:06:18 INFO DAGScheduler: ResultStage 1 (start at Spark.scala:40) finished in 0.189 s
+15/07/01 01:06:18 INFO DAGScheduler: Job 0 finished: start at Spark.scala:40, took 2.880263 s
+15/07/01 01:06:18 INFO ReceiverTracker: Starting 1 receivers
+15/07/01 01:06:18 INFO SparkContext: Starting job: start at Spark.scala:40
+15/07/01 01:06:18 INFO DAGScheduler: Got job 1 (start at Spark.scala:40) with 1 output partitions (allowLocal=false)
+15/07/01 01:06:18 INFO DAGScheduler: Final stage: ResultStage 2(start at Spark.scala:40)
+15/07/01 01:06:18 INFO DAGScheduler: Parents of final stage: List()
+15/07/01 01:06:18 INFO DAGScheduler: Missing parents: List()
+15/07/01 01:06:18 INFO DAGScheduler: Submitting ResultStage 2 (ParallelCollectionRDD[0] at start at Spark.scala:40), which has no missing parents
+15/07/01 01:06:18 INFO MemoryStore: ensureFreeSpace(46352) called with curMem=8391, maxMem=278302556
+15/07/01 01:06:18 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 45.3 KB, free 265.4 MB)
+15/07/01 01:06:18 INFO MemoryStore: ensureFreeSpace(15070) called with curMem=54743, maxMem=278302556
+15/07/01 01:06:18 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 14.7 KB, free 265.3 MB)
+15/07/01 01:06:18 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on 192.168.1.101:57149 (size: 14.7 KB, free: 265.4 MB)
+15/07/01 01:06:18 INFO SparkContext: Created broadcast 2 from broadcast at DAGScheduler.scala:874
+15/07/01 01:06:18 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (ParallelCollectionRDD[0] at start at Spark.scala:40)
+15/07/01 01:06:18 INFO TaskSchedulerImpl: Adding task set 2.0 with 1 tasks
+15/07/01 01:06:18 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 70, 192.168.1.101, PROCESS_LOCAL, 2541 bytes)
+15/07/01 01:06:18 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on 192.168.1.101:57157 (size: 14.7 KB, free: 265.4 MB)
+15/07/01 01:06:19 INFO ReceiverTracker: Registered receiver for stream 0 from 192.168.1.101:57154
+15/07/01 01:06:20 INFO JobScheduler: Added jobs for time 1435709180000 ms
+15/07/01 01:06:20 INFO JobScheduler: Starting job streaming job 1435709180000 ms.0 from job set of time 1435709180000 ms
+15/07/01 01:06:20 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
+15/07/01 01:06:20 INFO DAGScheduler: Job 2 finished: foreachRDD at Spark.scala:34, took 0.000019 s
+15/07/01 01:06:20 INFO JobScheduler: Finished job streaming job 1435709180000 ms.0 from job set of time 1435709180000 ms
+15/07/01 01:06:20 INFO JobScheduler: Starting job streaming job 1435709180000 ms.1 from job set of time 1435709180000 ms
 -------------------------------------------
-Time: 1435702266000 ms
+Time: 1435709180000 ms
 -------------------------------------------
 
-15/06/30 23:11:06 INFO JobScheduler: Finished job streaming job 1435702266000 ms.1 from job set of time 1435702266000 ms
-15/06/30 23:11:06 INFO JobScheduler: Starting job streaming job 1435702266000 ms.2 from job set of time 1435702266000 ms
-15/06/30 23:11:06 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
-15/06/30 23:11:06 INFO DAGScheduler: Job 2 finished: foreachRDD at Spark.scala:55, took 0.000017 s
-15/06/30 23:11:06 INFO JobScheduler: Finished job streaming job 1435702266000 ms.2 from job set of time 1435702266000 ms
-15/06/30 23:11:06 INFO JobScheduler: Starting job streaming job 1435702266000 ms.3 from job set of time 1435702266000 ms
+15/07/01 01:06:20 INFO JobScheduler: Finished job streaming job 1435709180000 ms.1 from job set of time 1435709180000 ms
+15/07/01 01:06:20 INFO JobScheduler: Starting job streaming job 1435709180000 ms.2 from job set of time 1435709180000 ms
+15/07/01 01:06:20 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
+15/07/01 01:06:20 INFO DAGScheduler: Job 3 finished: foreachRDD at Spark.scala:55, took 0.000024 s
+15/07/01 01:06:20 INFO JobScheduler: Finished job streaming job 1435709180000 ms.2 from job set of time 1435709180000 ms
+15/07/01 01:06:20 INFO JobScheduler: Starting job streaming job 1435709180000 ms.3 from job set of time 1435709180000 ms
 -------------------------------------------
-Time: 1435702266000 ms
+Time: 1435709180000 ms
 -------------------------------------------
 
-15/06/30 23:11:06 INFO JobScheduler: Finished job streaming job 1435702266000 ms.3 from job set of time 1435702266000 ms
-15/06/30 23:11:06 INFO JobScheduler: Starting job streaming job 1435702266000 ms.4 from job set of time 1435702266000 ms
-15/06/30 23:11:06 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
-15/06/30 23:11:06 INFO DAGScheduler: Job 3 finished: foreachRDD at FilterControl.scala:19, took 0.000015 s
+15/07/01 01:06:20 INFO JobScheduler: Finished job streaming job 1435709180000 ms.3 from job set of time 1435709180000 ms
+15/07/01 01:06:20 INFO JobScheduler: Starting job streaming job 1435709180000 ms.4 from job set of time 1435709180000 ms
+15/07/01 01:06:20 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
+15/07/01 01:06:20 INFO DAGScheduler: Job 4 finished: foreachRDD at FilterControl.scala:19, took 0.000020 s
 A GUARDAR AS HASHTAGS NO REDIS
 --------------------- Hash_tam_redis: 0
-15/06/30 23:11:06 INFO JobScheduler: Finished job streaming job 1435702266000 ms.4 from job set of time 1435702266000 ms
-15/06/30 23:11:06 INFO JobScheduler: Total delay: 0.105 s for time 1435702266000 ms (execution: 0.059 s)
-15/06/30 23:11:06 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer()
-15/06/30 23:11:06 INFO InputInfoTracker: remove old batch metadata:
-15/06/30 23:11:08 INFO JobScheduler: Added jobs for time 1435702268000 ms
-15/06/30 23:11:08 INFO JobScheduler: Starting job streaming job 1435702268000 ms.0 from job set of time 1435702268000 ms
-15/06/30 23:11:08 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
-15/06/30 23:11:08 INFO DAGScheduler: Job 4 finished: foreachRDD at Spark.scala:34, took 0.000019 s
-15/06/30 23:11:08 INFO JobScheduler: Finished job streaming job 1435702268000 ms.0 from job set of time 1435702268000 ms
-15/06/30 23:11:08 INFO JobScheduler: Starting job streaming job 1435702268000 ms.1 from job set of time 1435702268000 ms
+15/07/01 01:06:20 INFO JobScheduler: Finished job streaming job 1435709180000 ms.4 from job set of time 1435709180000 ms
+15/07/01 01:06:20 INFO JobScheduler: Total delay: 0.044 s for time 1435709180000 ms (execution: 0.019 s)
+15/07/01 01:06:20 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer()
+15/07/01 01:06:20 INFO InputInfoTracker: remove old batch metadata:
+15/07/01 01:06:25 INFO JobScheduler: Added jobs for time 1435709185000 ms
+15/07/01 01:06:25 INFO JobScheduler: Starting job streaming job 1435709185000 ms.0 from job set of time 1435709185000 ms
+15/07/01 01:06:25 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
+15/07/01 01:06:25 INFO DAGScheduler: Job 5 finished: foreachRDD at Spark.scala:34, took 0.000018 s
+15/07/01 01:06:25 INFO JobScheduler: Finished job streaming job 1435709185000 ms.0 from job set of time 1435709185000 ms
+15/07/01 01:06:25 INFO JobScheduler: Starting job streaming job 1435709185000 ms.1 from job set of time 1435709185000 ms
 -------------------------------------------
-Time: 1435702268000 ms
--------------------------------------------
-
-15/06/30 23:11:08 INFO JobScheduler: Finished job streaming job 1435702268000 ms.1 from job set of time 1435702268000 ms
-15/06/30 23:11:08 INFO JobScheduler: Starting job streaming job 1435702268000 ms.2 from job set of time 1435702268000 ms
-15/06/30 23:11:08 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
-15/06/30 23:11:08 INFO DAGScheduler: Job 5 finished: foreachRDD at Spark.scala:55, took 0.000016 s
-15/06/30 23:11:08 INFO JobScheduler: Finished job streaming job 1435702268000 ms.2 from job set of time 1435702268000 ms
-15/06/30 23:11:08 INFO JobScheduler: Starting job streaming job 1435702268000 ms.3 from job set of time 1435702268000 ms
--------------------------------------------
-Time: 1435702268000 ms
+Time: 1435709185000 ms
 -------------------------------------------
 
-15/06/30 23:11:08 INFO JobScheduler: Finished job streaming job 1435702268000 ms.3 from job set of time 1435702268000 ms
-15/06/30 23:11:08 INFO JobScheduler: Starting job streaming job 1435702268000 ms.4 from job set of time 1435702268000 ms
-15/06/30 23:11:08 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
-15/06/30 23:11:08 INFO DAGScheduler: Job 6 finished: foreachRDD at FilterControl.scala:19, took 0.000017 s
+15/07/01 01:06:25 INFO JobScheduler: Finished job streaming job 1435709185000 ms.1 from job set of time 1435709185000 ms
+15/07/01 01:06:25 INFO JobScheduler: Starting job streaming job 1435709185000 ms.2 from job set of time 1435709185000 ms
+15/07/01 01:06:25 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
+15/07/01 01:06:25 INFO DAGScheduler: Job 6 finished: foreachRDD at Spark.scala:55, took 0.000021 s
+15/07/01 01:06:25 INFO JobScheduler: Finished job streaming job 1435709185000 ms.2 from job set of time 1435709185000 ms
+15/07/01 01:06:25 INFO JobScheduler: Starting job streaming job 1435709185000 ms.3 from job set of time 1435709185000 ms
+-------------------------------------------
+Time: 1435709185000 ms
+-------------------------------------------
+
+15/07/01 01:06:25 INFO JobScheduler: Finished job streaming job 1435709185000 ms.3 from job set of time 1435709185000 ms
+15/07/01 01:06:25 INFO JobScheduler: Starting job streaming job 1435709185000 ms.4 from job set of time 1435709185000 ms
+15/07/01 01:06:25 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
+15/07/01 01:06:25 INFO DAGScheduler: Job 7 finished: foreachRDD at FilterControl.scala:19, took 0.000019 s
 A GUARDAR AS HASHTAGS NO REDIS
 --------------------- Hash_tam_redis: 0
-15/06/30 23:11:08 INFO JobScheduler: Finished job streaming job 1435702268000 ms.4 from job set of time 1435702268000 ms
-15/06/30 23:11:08 INFO JobScheduler: Total delay: 0.027 s for time 1435702268000 ms (execution: 0.015 s)
-15/06/30 23:11:08 INFO BlockRDD: Removing RDD 4 from persistence list
-15/06/30 23:11:08 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[4] at createStream at Spark.scala:31 of time 1435702268000 ms
-15/06/30 23:11:08 INFO MapPartitionsRDD: Removing RDD 5 from persistence list
-15/06/30 23:11:08 INFO BlockManager: Removing RDD 4
-15/06/30 23:11:08 INFO MapPartitionsRDD: Removing RDD 6 from persistence list
-15/06/30 23:11:08 INFO BlockManager: Removing RDD 5
-15/06/30 23:11:08 INFO BlockManager: Removing RDD 6
-15/06/30 23:11:08 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer()
-15/06/30 23:11:08 INFO InputInfoTracker: remove old batch metadata:
-15/06/30 23:11:10 INFO JobScheduler: Added jobs for time 1435702270000 ms
-15/06/30 23:11:10 INFO JobScheduler: Starting job streaming job 1435702270000 ms.0 from job set of time 1435702270000 ms
-15/06/30 23:11:10 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
-15/06/30 23:11:10 INFO DAGScheduler: Job 7 finished: foreachRDD at Spark.scala:34, took 0.000022 s
-15/06/30 23:11:10 INFO JobScheduler: Finished job streaming job 1435702270000 ms.0 from job set of time 1435702270000 ms
-15/06/30 23:11:10 INFO JobScheduler: Starting job streaming job 1435702270000 ms.1 from job set of time 1435702270000 ms
+15/07/01 01:06:25 INFO JobScheduler: Finished job streaming job 1435709185000 ms.4 from job set of time 1435709185000 ms
+15/07/01 01:06:25 INFO JobScheduler: Total delay: 0.024 s for time 1435709185000 ms (execution: 0.014 s)
+15/07/01 01:06:25 INFO BlockRDD: Removing RDD 4 from persistence list
+15/07/01 01:06:25 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[4] at createStream at Spark.scala:31 of time 1435709185000 ms
+15/07/01 01:06:25 INFO MapPartitionsRDD: Removing RDD 5 from persistence list
+15/07/01 01:06:25 INFO BlockManager: Removing RDD 4
+15/07/01 01:06:25 INFO MapPartitionsRDD: Removing RDD 6 from persistence list
+15/07/01 01:06:25 INFO BlockManager: Removing RDD 5
+15/07/01 01:06:25 INFO BlockManager: Removing RDD 6
+15/07/01 01:06:25 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer()
+15/07/01 01:06:25 INFO InputInfoTracker: remove old batch metadata:
+15/07/01 01:06:30 INFO JobScheduler: Added jobs for time 1435709190000 ms
+15/07/01 01:06:30 INFO JobScheduler: Starting job streaming job 1435709190000 ms.0 from job set of time 1435709190000 ms
+15/07/01 01:06:30 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
+15/07/01 01:06:30 INFO DAGScheduler: Job 8 finished: foreachRDD at Spark.scala:34, took 0.000020 s
+15/07/01 01:06:30 INFO JobScheduler: Finished job streaming job 1435709190000 ms.0 from job set of time 1435709190000 ms
+15/07/01 01:06:30 INFO JobScheduler: Starting job streaming job 1435709190000 ms.1 from job set of time 1435709190000 ms
 -------------------------------------------
-Time: 1435702270000 ms
--------------------------------------------
-
-15/06/30 23:11:10 INFO JobScheduler: Finished job streaming job 1435702270000 ms.1 from job set of time 1435702270000 ms
-15/06/30 23:11:10 INFO JobScheduler: Starting job streaming job 1435702270000 ms.2 from job set of time 1435702270000 ms
-15/06/30 23:11:10 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
-15/06/30 23:11:10 INFO DAGScheduler: Job 8 finished: foreachRDD at Spark.scala:55, took 0.000020 s
-15/06/30 23:11:10 INFO JobScheduler: Finished job streaming job 1435702270000 ms.2 from job set of time 1435702270000 ms
-15/06/30 23:11:10 INFO JobScheduler: Starting job streaming job 1435702270000 ms.3 from job set of time 1435702270000 ms
--------------------------------------------
-Time: 1435702270000 ms
+Time: 1435709190000 ms
 -------------------------------------------
 
-15/06/30 23:11:10 INFO JobScheduler: Finished job streaming job 1435702270000 ms.3 from job set of time 1435702270000 ms
-15/06/30 23:11:10 INFO JobScheduler: Starting job streaming job 1435702270000 ms.4 from job set of time 1435702270000 ms
-15/06/30 23:11:10 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
-15/06/30 23:11:10 INFO DAGScheduler: Job 9 finished: foreachRDD at FilterControl.scala:19, took 0.000015 s
+15/07/01 01:06:30 INFO JobScheduler: Finished job streaming job 1435709190000 ms.1 from job set of time 1435709190000 ms
+15/07/01 01:06:30 INFO JobScheduler: Starting job streaming job 1435709190000 ms.2 from job set of time 1435709190000 ms
+15/07/01 01:06:30 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
+15/07/01 01:06:30 INFO DAGScheduler: Job 9 finished: foreachRDD at Spark.scala:55, took 0.000014 s
+15/07/01 01:06:30 INFO JobScheduler: Finished job streaming job 1435709190000 ms.2 from job set of time 1435709190000 ms
+15/07/01 01:06:30 INFO JobScheduler: Starting job streaming job 1435709190000 ms.3 from job set of time 1435709190000 ms
+-------------------------------------------
+Time: 1435709190000 ms
+-------------------------------------------
+
+15/07/01 01:06:30 INFO JobScheduler: Finished job streaming job 1435709190000 ms.3 from job set of time 1435709190000 ms
+15/07/01 01:06:30 INFO JobScheduler: Starting job streaming job 1435709190000 ms.4 from job set of time 1435709190000 ms
+15/07/01 01:06:30 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
+15/07/01 01:06:30 INFO DAGScheduler: Job 10 finished: foreachRDD at FilterControl.scala:19, took 0.000017 s
 A GUARDAR AS HASHTAGS NO REDIS
 --------------------- Hash_tam_redis: 0
-15/06/30 23:11:10 INFO JobScheduler: Finished job streaming job 1435702270000 ms.4 from job set of time 1435702270000 ms
-15/06/30 23:11:10 INFO BlockRDD: Removing RDD 7 from persistence list
-15/06/30 23:11:10 INFO JobScheduler: Total delay: 0.026 s for time 1435702270000 ms (execution: 0.015 s)
-15/06/30 23:11:10 INFO BlockManager: Removing RDD 7
-15/06/30 23:11:10 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[7] at createStream at Spark.scala:31 of time 1435702270000 ms
-15/06/30 23:11:10 INFO MapPartitionsRDD: Removing RDD 8 from persistence list
-15/06/30 23:11:10 INFO BlockManager: Removing RDD 8
-15/06/30 23:11:10 INFO MapPartitionsRDD: Removing RDD 9 from persistence list
-15/06/30 23:11:10 INFO BlockManager: Removing RDD 9
-15/06/30 23:11:10 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435702266000 ms)
-15/06/30 23:11:10 INFO InputInfoTracker: remove old batch metadata: 1435702266000 ms
-15/06/30 23:11:12 INFO JobScheduler: Added jobs for time 1435702272000 ms
-15/06/30 23:11:12 INFO JobScheduler: Starting job streaming job 1435702272000 ms.0 from job set of time 1435702272000 ms
-15/06/30 23:11:12 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
-15/06/30 23:11:12 INFO DAGScheduler: Job 10 finished: foreachRDD at Spark.scala:34, took 0.000017 s
-15/06/30 23:11:12 INFO JobScheduler: Finished job streaming job 1435702272000 ms.0 from job set of time 1435702272000 ms
-15/06/30 23:11:12 INFO JobScheduler: Starting job streaming job 1435702272000 ms.1 from job set of time 1435702272000 ms
+15/07/01 01:06:30 INFO JobScheduler: Finished job streaming job 1435709190000 ms.4 from job set of time 1435709190000 ms
+15/07/01 01:06:30 INFO JobScheduler: Total delay: 0.024 s for time 1435709190000 ms (execution: 0.013 s)
+15/07/01 01:06:30 INFO BlockRDD: Removing RDD 7 from persistence list
+15/07/01 01:06:30 INFO BlockManager: Removing RDD 7
+15/07/01 01:06:30 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[7] at createStream at Spark.scala:31 of time 1435709190000 ms
+15/07/01 01:06:30 INFO MapPartitionsRDD: Removing RDD 8 from persistence list
+15/07/01 01:06:30 INFO BlockManager: Removing RDD 8
+15/07/01 01:06:30 INFO MapPartitionsRDD: Removing RDD 9 from persistence list
+15/07/01 01:06:30 INFO BlockManager: Removing RDD 9
+15/07/01 01:06:30 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435709180000 ms)
+15/07/01 01:06:30 INFO InputInfoTracker: remove old batch metadata: 1435709180000 ms
+15/07/01 01:06:35 INFO JobScheduler: Added jobs for time 1435709195000 ms
+15/07/01 01:06:35 INFO JobScheduler: Starting job streaming job 1435709195000 ms.0 from job set of time 1435709195000 ms
+15/07/01 01:06:35 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
+15/07/01 01:06:35 INFO DAGScheduler: Job 11 finished: foreachRDD at Spark.scala:34, took 0.000018 s
+15/07/01 01:06:35 INFO JobScheduler: Finished job streaming job 1435709195000 ms.0 from job set of time 1435709195000 ms
+15/07/01 01:06:35 INFO JobScheduler: Starting job streaming job 1435709195000 ms.1 from job set of time 1435709195000 ms
 -------------------------------------------
-Time: 1435702272000 ms
--------------------------------------------
-
-15/06/30 23:11:12 INFO JobScheduler: Finished job streaming job 1435702272000 ms.1 from job set of time 1435702272000 ms
-15/06/30 23:11:12 INFO JobScheduler: Starting job streaming job 1435702272000 ms.2 from job set of time 1435702272000 ms
-15/06/30 23:11:12 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
-15/06/30 23:11:12 INFO DAGScheduler: Job 11 finished: foreachRDD at Spark.scala:55, took 0.000014 s
-15/06/30 23:11:12 INFO JobScheduler: Finished job streaming job 1435702272000 ms.2 from job set of time 1435702272000 ms
-15/06/30 23:11:12 INFO JobScheduler: Starting job streaming job 1435702272000 ms.3 from job set of time 1435702272000 ms
--------------------------------------------
-Time: 1435702272000 ms
+Time: 1435709195000 ms
 -------------------------------------------
 
-15/06/30 23:11:12 INFO JobScheduler: Finished job streaming job 1435702272000 ms.3 from job set of time 1435702272000 ms
-15/06/30 23:11:12 INFO JobScheduler: Starting job streaming job 1435702272000 ms.4 from job set of time 1435702272000 ms
-15/06/30 23:11:12 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
-15/06/30 23:11:12 INFO DAGScheduler: Job 12 finished: foreachRDD at FilterControl.scala:19, took 0.000022 s
+15/07/01 01:06:35 INFO JobScheduler: Finished job streaming job 1435709195000 ms.1 from job set of time 1435709195000 ms
+15/07/01 01:06:35 INFO JobScheduler: Starting job streaming job 1435709195000 ms.2 from job set of time 1435709195000 ms
+15/07/01 01:06:35 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
+15/07/01 01:06:35 INFO DAGScheduler: Job 12 finished: foreachRDD at Spark.scala:55, took 0.000014 s
+15/07/01 01:06:35 INFO JobScheduler: Finished job streaming job 1435709195000 ms.2 from job set of time 1435709195000 ms
+15/07/01 01:06:35 INFO JobScheduler: Starting job streaming job 1435709195000 ms.3 from job set of time 1435709195000 ms
+-------------------------------------------
+Time: 1435709195000 ms
+-------------------------------------------
+
+15/07/01 01:06:35 INFO JobScheduler: Finished job streaming job 1435709195000 ms.3 from job set of time 1435709195000 ms
+15/07/01 01:06:35 INFO JobScheduler: Starting job streaming job 1435709195000 ms.4 from job set of time 1435709195000 ms
+15/07/01 01:06:35 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
+15/07/01 01:06:35 INFO DAGScheduler: Job 13 finished: foreachRDD at FilterControl.scala:19, took 0.000014 s
 A GUARDAR AS HASHTAGS NO REDIS
 --------------------- Hash_tam_redis: 0
-15/06/30 23:11:12 INFO JobScheduler: Finished job streaming job 1435702272000 ms.4 from job set of time 1435702272000 ms
-15/06/30 23:11:12 INFO JobScheduler: Total delay: 0.022 s for time 1435702272000 ms (execution: 0.013 s)
-15/06/30 23:11:12 INFO BlockRDD: Removing RDD 10 from persistence list
-15/06/30 23:11:12 INFO BlockManager: Removing RDD 10
-15/06/30 23:11:12 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[10] at createStream at Spark.scala:31 of time 1435702272000 ms
-15/06/30 23:11:12 INFO MapPartitionsRDD: Removing RDD 11 from persistence list
-15/06/30 23:11:12 INFO BlockManager: Removing RDD 11
-15/06/30 23:11:12 INFO MapPartitionsRDD: Removing RDD 12 from persistence list
-15/06/30 23:11:12 INFO BlockManager: Removing RDD 12
-15/06/30 23:11:12 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435702268000 ms)
-15/06/30 23:11:12 INFO InputInfoTracker: remove old batch metadata: 1435702268000 ms
-^C15/06/30 23:11:12 INFO StreamingContext: Invoking stop(stopGracefully=false) from shutdown hook
-15/06/30 23:11:12 INFO ReceiverTracker: Sent stop signal to all 0 receivers
-^C^C^C^C15/06/30 23:11:14 INFO JobScheduler: Added jobs for time 1435702274000 ms
-15/06/30 23:11:14 INFO JobScheduler: Starting job streaming job 1435702274000 ms.0 from job set of time 1435702274000 ms
-15/06/30 23:11:14 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
-15/06/30 23:11:14 INFO DAGScheduler: Job 13 finished: foreachRDD at Spark.scala:34, took 0.000020 s
-15/06/30 23:11:14 INFO JobScheduler: Finished job streaming job 1435702274000 ms.0 from job set of time 1435702274000 ms
-15/06/30 23:11:14 INFO JobScheduler: Starting job streaming job 1435702274000 ms.1 from job set of time 1435702274000 ms
+15/07/01 01:06:35 INFO JobScheduler: Finished job streaming job 1435709195000 ms.4 from job set of time 1435709195000 ms
+15/07/01 01:06:35 INFO JobScheduler: Total delay: 0.020 s for time 1435709195000 ms (execution: 0.012 s)
+15/07/01 01:06:35 INFO BlockRDD: Removing RDD 10 from persistence list
+15/07/01 01:06:35 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[10] at createStream at Spark.scala:31 of time 1435709195000 ms
+15/07/01 01:06:35 INFO BlockManager: Removing RDD 10
+15/07/01 01:06:35 INFO MapPartitionsRDD: Removing RDD 11 from persistence list
+15/07/01 01:06:35 INFO MapPartitionsRDD: Removing RDD 12 from persistence list
+15/07/01 01:06:35 INFO BlockManager: Removing RDD 11
+15/07/01 01:06:35 INFO BlockManager: Removing RDD 12
+15/07/01 01:06:35 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435709185000 ms)
+15/07/01 01:06:35 INFO InputInfoTracker: remove old batch metadata: 1435709185000 ms
+15/07/01 01:06:40 INFO JobScheduler: Added jobs for time 1435709200000 ms
+15/07/01 01:06:40 INFO JobScheduler: Starting job streaming job 1435709200000 ms.0 from job set of time 1435709200000 ms
+15/07/01 01:06:40 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
+15/07/01 01:06:40 INFO DAGScheduler: Job 14 finished: foreachRDD at Spark.scala:34, took 0.000017 s
+15/07/01 01:06:40 INFO JobScheduler: Finished job streaming job 1435709200000 ms.0 from job set of time 1435709200000 ms
+15/07/01 01:06:40 INFO JobScheduler: Starting job streaming job 1435709200000 ms.1 from job set of time 1435709200000 ms
 -------------------------------------------
-Time: 1435702274000 ms
+Time: 1435709200000 ms
 -------------------------------------------
 
-15/06/30 23:11:14 INFO JobScheduler: Finished job streaming job 1435702274000 ms.1 from job set of time 1435702274000 ms
-15/06/30 23:11:14 INFO JobScheduler: Starting job streaming job 1435702274000 ms.2 from job set of time 1435702274000 ms
-15/06/30 23:11:14 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
-15/06/30 23:11:14 INFO DAGScheduler: Job 14 finished: foreachRDD at Spark.scala:55, took 0.000012 s
-15/06/30 23:11:14 INFO JobScheduler: Finished job streaming job 1435702274000 ms.2 from job set of time 1435702274000 ms
-15/06/30 23:11:14 INFO JobScheduler: Starting job streaming job 1435702274000 ms.3 from job set of time 1435702274000 ms
+15/07/01 01:06:40 INFO JobScheduler: Finished job streaming job 1435709200000 ms.1 from job set of time 1435709200000 ms
+15/07/01 01:06:40 INFO JobScheduler: Starting job streaming job 1435709200000 ms.2 from job set of time 1435709200000 ms
+15/07/01 01:06:40 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
+15/07/01 01:06:40 INFO DAGScheduler: Job 15 finished: foreachRDD at Spark.scala:55, took 0.000014 s
+15/07/01 01:06:40 INFO JobScheduler: Finished job streaming job 1435709200000 ms.2 from job set of time 1435709200000 ms
+15/07/01 01:06:40 INFO JobScheduler: Starting job streaming job 1435709200000 ms.3 from job set of time 1435709200000 ms
 -------------------------------------------
-Time: 1435702274000 ms
+Time: 1435709200000 ms
 -------------------------------------------
 
-15/06/30 23:11:14 INFO JobScheduler: Finished job streaming job 1435702274000 ms.3 from job set of time 1435702274000 ms
-15/06/30 23:11:14 INFO JobScheduler: Starting job streaming job 1435702274000 ms.4 from job set of time 1435702274000 ms
-15/06/30 23:11:14 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
-15/06/30 23:11:14 INFO DAGScheduler: Job 15 finished: foreachRDD at FilterControl.scala:19, took 0.000021 s
+15/07/01 01:06:40 INFO JobScheduler: Finished job streaming job 1435709200000 ms.3 from job set of time 1435709200000 ms
+15/07/01 01:06:40 INFO JobScheduler: Starting job streaming job 1435709200000 ms.4 from job set of time 1435709200000 ms
+15/07/01 01:06:40 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
+15/07/01 01:06:40 INFO DAGScheduler: Job 16 finished: foreachRDD at FilterControl.scala:19, took 0.000014 s
 A GUARDAR AS HASHTAGS NO REDIS
 --------------------- Hash_tam_redis: 0
-15/06/30 23:11:14 INFO JobScheduler: Finished job streaming job 1435702274000 ms.4 from job set of time 1435702274000 ms
-15/06/30 23:11:14 INFO BlockRDD: Removing RDD 13 from persistence list
-15/06/30 23:11:14 INFO JobScheduler: Total delay: 0.022 s for time 1435702274000 ms (execution: 0.014 s)
-15/06/30 23:11:14 INFO BlockManager: Removing RDD 13
-15/06/30 23:11:14 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[13] at createStream at Spark.scala:31 of time 1435702274000 ms
-15/06/30 23:11:14 INFO MapPartitionsRDD: Removing RDD 14 from persistence list
-15/06/30 23:11:14 INFO MapPartitionsRDD: Removing RDD 15 from persistence list
-15/06/30 23:11:14 INFO BlockManager: Removing RDD 14
-15/06/30 23:11:14 INFO BlockManager: Removing RDD 15
-15/06/30 23:11:14 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435702270000 ms)
-15/06/30 23:11:14 INFO InputInfoTracker: remove old batch metadata: 1435702270000 ms
-^C^C^C^C^C15/06/30 23:11:16 INFO JobScheduler: Added jobs for time 1435702276000 ms
-15/06/30 23:11:16 INFO JobScheduler: Starting job streaming job 1435702276000 ms.0 from job set of time 1435702276000 ms
-15/06/30 23:11:16 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
-15/06/30 23:11:16 INFO DAGScheduler: Job 16 finished: foreachRDD at Spark.scala:34, took 0.000020 s
-15/06/30 23:11:16 INFO JobScheduler: Finished job streaming job 1435702276000 ms.0 from job set of time 1435702276000 ms
-15/06/30 23:11:16 INFO JobScheduler: Starting job streaming job 1435702276000 ms.1 from job set of time 1435702276000 ms
+15/07/01 01:06:40 INFO JobScheduler: Finished job streaming job 1435709200000 ms.4 from job set of time 1435709200000 ms
+15/07/01 01:06:40 INFO JobScheduler: Total delay: 0.019 s for time 1435709200000 ms (execution: 0.012 s)
+15/07/01 01:06:40 INFO BlockRDD: Removing RDD 13 from persistence list
+15/07/01 01:06:40 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[13] at createStream at Spark.scala:31 of time 1435709200000 ms
+15/07/01 01:06:40 INFO BlockManager: Removing RDD 13
+15/07/01 01:06:40 INFO MapPartitionsRDD: Removing RDD 14 from persistence list
+15/07/01 01:06:40 INFO BlockManager: Removing RDD 14
+15/07/01 01:06:40 INFO MapPartitionsRDD: Removing RDD 15 from persistence list
+15/07/01 01:06:40 INFO BlockManager: Removing RDD 15
+15/07/01 01:06:40 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435709190000 ms)
+15/07/01 01:06:40 INFO InputInfoTracker: remove old batch metadata: 1435709190000 ms
+15/07/01 01:06:45 INFO JobScheduler: Added jobs for time 1435709205000 ms
+15/07/01 01:06:45 INFO JobScheduler: Starting job streaming job 1435709205000 ms.0 from job set of time 1435709205000 ms
+15/07/01 01:06:45 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
+15/07/01 01:06:45 INFO DAGScheduler: Job 17 finished: foreachRDD at Spark.scala:34, took 0.000022 s
+15/07/01 01:06:45 INFO JobScheduler: Finished job streaming job 1435709205000 ms.0 from job set of time 1435709205000 ms
+15/07/01 01:06:45 INFO JobScheduler: Starting job streaming job 1435709205000 ms.1 from job set of time 1435709205000 ms
 -------------------------------------------
-Time: 1435702276000 ms
--------------------------------------------
-
-15/06/30 23:11:16 INFO JobScheduler: Finished job streaming job 1435702276000 ms.1 from job set of time 1435702276000 ms
-15/06/30 23:11:16 INFO JobScheduler: Starting job streaming job 1435702276000 ms.2 from job set of time 1435702276000 ms
-15/06/30 23:11:16 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
-15/06/30 23:11:16 INFO DAGScheduler: Job 17 finished: foreachRDD at Spark.scala:55, took 0.000022 s
-15/06/30 23:11:16 INFO JobScheduler: Finished job streaming job 1435702276000 ms.2 from job set of time 1435702276000 ms
-15/06/30 23:11:16 INFO JobScheduler: Starting job streaming job 1435702276000 ms.3 from job set of time 1435702276000 ms
--------------------------------------------
-Time: 1435702276000 ms
+Time: 1435709205000 ms
 -------------------------------------------
 
-15/06/30 23:11:16 INFO JobScheduler: Finished job streaming job 1435702276000 ms.3 from job set of time 1435702276000 ms
-15/06/30 23:11:16 INFO JobScheduler: Starting job streaming job 1435702276000 ms.4 from job set of time 1435702276000 ms
-15/06/30 23:11:16 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
-15/06/30 23:11:16 INFO DAGScheduler: Job 18 finished: foreachRDD at FilterControl.scala:19, took 0.000019 s
+15/07/01 01:06:45 INFO JobScheduler: Finished job streaming job 1435709205000 ms.1 from job set of time 1435709205000 ms
+15/07/01 01:06:45 INFO JobScheduler: Starting job streaming job 1435709205000 ms.2 from job set of time 1435709205000 ms
+15/07/01 01:06:45 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
+15/07/01 01:06:45 INFO DAGScheduler: Job 18 finished: foreachRDD at Spark.scala:55, took 0.000018 s
+15/07/01 01:06:45 INFO JobScheduler: Finished job streaming job 1435709205000 ms.2 from job set of time 1435709205000 ms
+15/07/01 01:06:45 INFO JobScheduler: Starting job streaming job 1435709205000 ms.3 from job set of time 1435709205000 ms
+-------------------------------------------
+Time: 1435709205000 ms
+-------------------------------------------
+
+15/07/01 01:06:45 INFO JobScheduler: Finished job streaming job 1435709205000 ms.3 from job set of time 1435709205000 ms
+15/07/01 01:06:45 INFO JobScheduler: Starting job streaming job 1435709205000 ms.4 from job set of time 1435709205000 ms
+15/07/01 01:06:45 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
+15/07/01 01:06:45 INFO DAGScheduler: Job 19 finished: foreachRDD at FilterControl.scala:19, took 0.000016 s
 A GUARDAR AS HASHTAGS NO REDIS
 --------------------- Hash_tam_redis: 0
-15/06/30 23:11:16 INFO JobScheduler: Finished job streaming job 1435702276000 ms.4 from job set of time 1435702276000 ms
-15/06/30 23:11:16 INFO JobScheduler: Total delay: 0.024 s for time 1435702276000 ms (execution: 0.015 s)
-15/06/30 23:11:16 INFO BlockRDD: Removing RDD 16 from persistence list
-15/06/30 23:11:16 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[16] at createStream at Spark.scala:31 of time 1435702276000 ms
-15/06/30 23:11:16 INFO BlockManager: Removing RDD 16
-15/06/30 23:11:16 INFO MapPartitionsRDD: Removing RDD 17 from persistence list
-15/06/30 23:11:16 INFO MapPartitionsRDD: Removing RDD 18 from persistence list
-15/06/30 23:11:16 INFO BlockManager: Removing RDD 17
-15/06/30 23:11:16 INFO BlockManager: Removing RDD 18
-15/06/30 23:11:16 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435702272000 ms)
-15/06/30 23:11:16 INFO InputInfoTracker: remove old batch metadata: 1435702272000 ms
-^C^C^C^C^C^C15/06/30 23:11:18 INFO JobScheduler: Added jobs for time 1435702278000 ms
-15/06/30 23:11:18 INFO JobScheduler: Starting job streaming job 1435702278000 ms.0 from job set of time 1435702278000 ms
-15/06/30 23:11:18 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
-15/06/30 23:11:18 INFO DAGScheduler: Job 19 finished: foreachRDD at Spark.scala:34, took 0.000020 s
-15/06/30 23:11:18 INFO JobScheduler: Finished job streaming job 1435702278000 ms.0 from job set of time 1435702278000 ms
-15/06/30 23:11:18 INFO JobScheduler: Starting job streaming job 1435702278000 ms.1 from job set of time 1435702278000 ms
+15/07/01 01:06:45 INFO JobScheduler: Finished job streaming job 1435709205000 ms.4 from job set of time 1435709205000 ms
+15/07/01 01:06:45 INFO JobScheduler: Total delay: 0.023 s for time 1435709205000 ms (execution: 0.013 s)
+15/07/01 01:06:45 INFO BlockRDD: Removing RDD 16 from persistence list
+15/07/01 01:06:45 INFO BlockManager: Removing RDD 16
+15/07/01 01:06:45 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[16] at createStream at Spark.scala:31 of time 1435709205000 ms
+15/07/01 01:06:45 INFO MapPartitionsRDD: Removing RDD 17 from persistence list
+15/07/01 01:06:45 INFO BlockManager: Removing RDD 17
+15/07/01 01:06:45 INFO MapPartitionsRDD: Removing RDD 18 from persistence list
+15/07/01 01:06:45 INFO BlockManager: Removing RDD 18
+15/07/01 01:06:45 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435709195000 ms)
+15/07/01 01:06:45 INFO InputInfoTracker: remove old batch metadata: 1435709195000 ms
+15/07/01 01:06:50 INFO JobScheduler: Added jobs for time 1435709210000 ms
+15/07/01 01:06:50 INFO JobScheduler: Starting job streaming job 1435709210000 ms.0 from job set of time 1435709210000 ms
+15/07/01 01:06:50 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
+15/07/01 01:06:50 INFO DAGScheduler: Job 20 finished: foreachRDD at Spark.scala:34, took 0.000019 s
+15/07/01 01:06:50 INFO JobScheduler: Finished job streaming job 1435709210000 ms.0 from job set of time 1435709210000 ms
+15/07/01 01:06:50 INFO JobScheduler: Starting job streaming job 1435709210000 ms.1 from job set of time 1435709210000 ms
 -------------------------------------------
-Time: 1435702278000 ms
--------------------------------------------
-
-15/06/30 23:11:18 INFO JobScheduler: Finished job streaming job 1435702278000 ms.1 from job set of time 1435702278000 ms
-15/06/30 23:11:18 INFO JobScheduler: Starting job streaming job 1435702278000 ms.2 from job set of time 1435702278000 ms
-15/06/30 23:11:18 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
-15/06/30 23:11:18 INFO DAGScheduler: Job 20 finished: foreachRDD at Spark.scala:55, took 0.000016 s
-15/06/30 23:11:18 INFO JobScheduler: Finished job streaming job 1435702278000 ms.2 from job set of time 1435702278000 ms
-15/06/30 23:11:18 INFO JobScheduler: Starting job streaming job 1435702278000 ms.3 from job set of time 1435702278000 ms
--------------------------------------------
-Time: 1435702278000 ms
+Time: 1435709210000 ms
 -------------------------------------------
 
-15/06/30 23:11:18 INFO JobScheduler: Finished job streaming job 1435702278000 ms.3 from job set of time 1435702278000 ms
-15/06/30 23:11:18 INFO JobScheduler: Starting job streaming job 1435702278000 ms.4 from job set of time 1435702278000 ms
-15/06/30 23:11:18 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
-15/06/30 23:11:18 INFO DAGScheduler: Job 21 finished: foreachRDD at FilterControl.scala:19, took 0.000019 s
+15/07/01 01:06:50 INFO JobScheduler: Finished job streaming job 1435709210000 ms.1 from job set of time 1435709210000 ms
+15/07/01 01:06:50 INFO JobScheduler: Starting job streaming job 1435709210000 ms.2 from job set of time 1435709210000 ms
+15/07/01 01:06:50 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
+15/07/01 01:06:50 INFO DAGScheduler: Job 21 finished: foreachRDD at Spark.scala:55, took 0.000021 s
+15/07/01 01:06:50 INFO JobScheduler: Finished job streaming job 1435709210000 ms.2 from job set of time 1435709210000 ms
+15/07/01 01:06:50 INFO JobScheduler: Starting job streaming job 1435709210000 ms.3 from job set of time 1435709210000 ms
+-------------------------------------------
+Time: 1435709210000 ms
+-------------------------------------------
+
+15/07/01 01:06:50 INFO JobScheduler: Finished job streaming job 1435709210000 ms.3 from job set of time 1435709210000 ms
+15/07/01 01:06:50 INFO JobScheduler: Starting job streaming job 1435709210000 ms.4 from job set of time 1435709210000 ms
+15/07/01 01:06:50 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
+15/07/01 01:06:50 INFO DAGScheduler: Job 22 finished: foreachRDD at FilterControl.scala:19, took 0.000017 s
 A GUARDAR AS HASHTAGS NO REDIS
 --------------------- Hash_tam_redis: 0
-15/06/30 23:11:18 INFO JobScheduler: Finished job streaming job 1435702278000 ms.4 from job set of time 1435702278000 ms
-15/06/30 23:11:18 INFO BlockRDD: Removing RDD 19 from persistence list
-15/06/30 23:11:18 INFO JobScheduler: Total delay: 0.024 s for time 1435702278000 ms (execution: 0.014 s)
-15/06/30 23:11:18 INFO BlockManager: Removing RDD 19
-15/06/30 23:11:18 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[19] at createStream at Spark.scala:31 of time 1435702278000 ms
-15/06/30 23:11:18 INFO MapPartitionsRDD: Removing RDD 20 from persistence list
-15/06/30 23:11:18 INFO MapPartitionsRDD: Removing RDD 21 from persistence list
-15/06/30 23:11:18 INFO BlockManager: Removing RDD 20
-15/06/30 23:11:18 INFO BlockManager: Removing RDD 21
-15/06/30 23:11:18 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435702274000 ms)
-15/06/30 23:11:18 INFO InputInfoTracker: remove old batch metadata: 1435702274000 ms
-^C^C^C^C^C^C^C^C^C^C^C15/06/30 23:11:19 WARN TaskSchedulerImpl: Initial job has not accepted any resources; check your cluster UI to ensure that workers are registered and have sufficient resources
-15/06/30 23:11:20 INFO JobScheduler: Added jobs for time 1435702280000 ms
-15/06/30 23:11:20 INFO JobScheduler: Starting job streaming job 1435702280000 ms.0 from job set of time 1435702280000 ms
-15/06/30 23:11:20 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
-15/06/30 23:11:20 INFO DAGScheduler: Job 22 finished: foreachRDD at Spark.scala:34, took 0.000020 s
-15/06/30 23:11:20 INFO JobScheduler: Finished job streaming job 1435702280000 ms.0 from job set of time 1435702280000 ms
-15/06/30 23:11:20 INFO JobScheduler: Starting job streaming job 1435702280000 ms.1 from job set of time 1435702280000 ms
+15/07/01 01:06:50 INFO JobScheduler: Finished job streaming job 1435709210000 ms.4 from job set of time 1435709210000 ms
+15/07/01 01:06:50 INFO JobScheduler: Total delay: 0.022 s for time 1435709210000 ms (execution: 0.013 s)
+15/07/01 01:06:50 INFO BlockRDD: Removing RDD 19 from persistence list
+15/07/01 01:06:50 INFO BlockManager: Removing RDD 19
+15/07/01 01:06:50 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[19] at createStream at Spark.scala:31 of time 1435709210000 ms
+15/07/01 01:06:50 INFO MapPartitionsRDD: Removing RDD 20 from persistence list
+15/07/01 01:06:50 INFO BlockManager: Removing RDD 20
+15/07/01 01:06:50 INFO MapPartitionsRDD: Removing RDD 21 from persistence list
+15/07/01 01:06:50 INFO BlockManager: Removing RDD 21
+15/07/01 01:06:50 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435709200000 ms)
+15/07/01 01:06:50 INFO InputInfoTracker: remove old batch metadata: 1435709200000 ms
+15/07/01 01:06:55 INFO JobScheduler: Added jobs for time 1435709215000 ms
+15/07/01 01:06:55 INFO JobScheduler: Starting job streaming job 1435709215000 ms.0 from job set of time 1435709215000 ms
+15/07/01 01:06:55 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
+15/07/01 01:06:55 INFO DAGScheduler: Job 23 finished: foreachRDD at Spark.scala:34, took 0.000024 s
+15/07/01 01:06:55 INFO JobScheduler: Finished job streaming job 1435709215000 ms.0 from job set of time 1435709215000 ms
+15/07/01 01:06:55 INFO JobScheduler: Starting job streaming job 1435709215000 ms.1 from job set of time 1435709215000 ms
 -------------------------------------------
-Time: 1435702280000 ms
--------------------------------------------
-
-15/06/30 23:11:20 INFO JobScheduler: Finished job streaming job 1435702280000 ms.1 from job set of time 1435702280000 ms
-15/06/30 23:11:20 INFO JobScheduler: Starting job streaming job 1435702280000 ms.2 from job set of time 1435702280000 ms
-15/06/30 23:11:20 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
-15/06/30 23:11:20 INFO DAGScheduler: Job 23 finished: foreachRDD at Spark.scala:55, took 0.000013 s
-15/06/30 23:11:20 INFO JobScheduler: Finished job streaming job 1435702280000 ms.2 from job set of time 1435702280000 ms
-15/06/30 23:11:20 INFO JobScheduler: Starting job streaming job 1435702280000 ms.3 from job set of time 1435702280000 ms
--------------------------------------------
-Time: 1435702280000 ms
+Time: 1435709215000 ms
 -------------------------------------------
 
-15/06/30 23:11:20 INFO JobScheduler: Finished job streaming job 1435702280000 ms.3 from job set of time 1435702280000 ms
-15/06/30 23:11:20 INFO JobScheduler: Starting job streaming job 1435702280000 ms.4 from job set of time 1435702280000 ms
-15/06/30 23:11:20 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
-15/06/30 23:11:20 INFO DAGScheduler: Job 24 finished: foreachRDD at FilterControl.scala:19, took 0.000015 s
+15/07/01 01:06:55 INFO JobScheduler: Finished job streaming job 1435709215000 ms.1 from job set of time 1435709215000 ms
+15/07/01 01:06:55 INFO JobScheduler: Starting job streaming job 1435709215000 ms.2 from job set of time 1435709215000 ms
+15/07/01 01:06:55 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
+15/07/01 01:06:55 INFO DAGScheduler: Job 24 finished: foreachRDD at Spark.scala:55, took 0.000023 s
+15/07/01 01:06:55 INFO JobScheduler: Finished job streaming job 1435709215000 ms.2 from job set of time 1435709215000 ms
+15/07/01 01:06:55 INFO JobScheduler: Starting job streaming job 1435709215000 ms.3 from job set of time 1435709215000 ms
+-------------------------------------------
+Time: 1435709215000 ms
+-------------------------------------------
+
+15/07/01 01:06:55 INFO JobScheduler: Finished job streaming job 1435709215000 ms.3 from job set of time 1435709215000 ms
+15/07/01 01:06:55 INFO JobScheduler: Starting job streaming job 1435709215000 ms.4 from job set of time 1435709215000 ms
+15/07/01 01:06:55 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
+15/07/01 01:06:55 INFO DAGScheduler: Job 25 finished: foreachRDD at FilterControl.scala:19, took 0.000019 s
 A GUARDAR AS HASHTAGS NO REDIS
 --------------------- Hash_tam_redis: 0
-15/06/30 23:11:20 INFO JobScheduler: Finished job streaming job 1435702280000 ms.4 from job set of time 1435702280000 ms
-15/06/30 23:11:20 INFO BlockRDD: Removing RDD 22 from persistence list
-15/06/30 23:11:20 INFO JobScheduler: Total delay: 0.022 s for time 1435702280000 ms (execution: 0.014 s)
-15/06/30 23:11:20 INFO BlockManager: Removing RDD 22
-15/06/30 23:11:20 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[22] at createStream at Spark.scala:31 of time 1435702280000 ms
-15/06/30 23:11:20 INFO MapPartitionsRDD: Removing RDD 23 from persistence list
-15/06/30 23:11:20 INFO MapPartitionsRDD: Removing RDD 24 from persistence list
-15/06/30 23:11:20 INFO BlockManager: Removing RDD 23
-15/06/30 23:11:20 INFO BlockManager: Removing RDD 24
-15/06/30 23:11:20 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435702276000 ms)
-15/06/30 23:11:20 INFO InputInfoTracker: remove old batch metadata: 1435702276000 ms
-^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C^C15/06/30 23:11:22 INFO JobScheduler: Added jobs for time 1435702282000 ms
-15/06/30 23:11:22 INFO JobScheduler: Starting job streaming job 1435702282000 ms.0 from job set of time 1435702282000 ms
-15/06/30 23:11:22 INFO SparkContext: Starting job: foreachRDD at Spark.scala:34
-15/06/30 23:11:22 INFO DAGScheduler: Job 25 finished: foreachRDD at Spark.scala:34, took 0.000018 s
-15/06/30 23:11:22 INFO JobScheduler: Finished job streaming job 1435702282000 ms.0 from job set of time 1435702282000 ms
-15/06/30 23:11:22 INFO JobScheduler: Starting job streaming job 1435702282000 ms.1 from job set of time 1435702282000 ms
--------------------------------------------
-Time: 1435702282000 ms
--------------------------------------------
-
-15/06/30 23:11:22 INFO JobScheduler: Finished job streaming job 1435702282000 ms.1 from job set of time 1435702282000 ms
-15/06/30 23:11:22 INFO JobScheduler: Starting job streaming job 1435702282000 ms.2 from job set of time 1435702282000 ms
-15/06/30 23:11:22 INFO SparkContext: Starting job: foreachRDD at Spark.scala:55
-15/06/30 23:11:22 INFO DAGScheduler: Job 26 finished: foreachRDD at Spark.scala:55, took 0.000020 s
-15/06/30 23:11:22 INFO JobScheduler: Finished job streaming job 1435702282000 ms.2 from job set of time 1435702282000 ms
-15/06/30 23:11:22 INFO JobScheduler: Starting job streaming job 1435702282000 ms.3 from job set of time 1435702282000 ms
--------------------------------------------
-Time: 1435702282000 ms
--------------------------------------------
-
-15/06/30 23:11:22 INFO JobScheduler: Finished job streaming job 1435702282000 ms.3 from job set of time 1435702282000 ms
-15/06/30 23:11:22 INFO JobScheduler: Starting job streaming job 1435702282000 ms.4 from job set of time 1435702282000 ms
-15/06/30 23:11:22 INFO SparkContext: Starting job: foreachRDD at FilterControl.scala:19
-15/06/30 23:11:22 INFO DAGScheduler: Job 27 finished: foreachRDD at FilterControl.scala:19, took 0.000021 s
-A GUARDAR AS HASHTAGS NO REDIS
---------------------- Hash_tam_redis: 0
-15/06/30 23:11:22 INFO JobScheduler: Finished job streaming job 1435702282000 ms.4 from job set of time 1435702282000 ms
-15/06/30 23:11:22 INFO JobScheduler: Total delay: 0.021 s for time 1435702282000 ms (execution: 0.013 s)
-15/06/30 23:11:22 INFO BlockRDD: Removing RDD 25 from persistence list
-15/06/30 23:11:22 INFO BlockManager: Removing RDD 25
-15/06/30 23:11:22 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[25] at createStream at Spark.scala:31 of time 1435702282000 ms
-15/06/30 23:11:22 INFO MapPartitionsRDD: Removing RDD 26 from persistence list
-15/06/30 23:11:22 INFO MapPartitionsRDD: Removing RDD 27 from persistence list
-15/06/30 23:11:22 INFO BlockManager: Removing RDD 26
-15/06/30 23:11:22 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435702278000 ms)
-15/06/30 23:11:22 INFO BlockManager: Removing RDD 27
-15/06/30 23:11:22 INFO InputInfoTracker: remove old batch metadata: 1435702278000 ms
-15/06/30 23:11:22 INFO ReceiverTracker: All of the receivers have deregistered successfully
-15/06/30 23:11:22 INFO ReceiverTracker: ReceiverTracker stopped
-15/06/30 23:11:22 INFO JobGenerator: Stopping JobGenerator immediately
-15/06/30 23:11:22 INFO RecurringTimer: Stopped timer for JobGenerator after time 1435702282000
-15/06/30 23:11:22 INFO JobGenerator: Stopped JobGenerator
-15/06/30 23:11:22 INFO JobScheduler: Stopped JobScheduler
-15/06/30 23:11:22 INFO StreamingContext: StreamingContext stopped successfully
-15/06/30 23:11:22 INFO SparkContext: Invoking stop() from shutdown hook
-^C15/06/30 23:11:22 INFO SparkUI: Stopped Spark web UI at http://192.168.1.101:4040
-15/06/30 23:11:22 INFO DAGScheduler: Stopping DAGScheduler
-15/06/30 23:11:22 INFO DAGScheduler: Job 0 failed: start at Spark.scala:40, took 17.783752 s
-Exception in thread "Thread-27" org.apache.spark.SparkException: Job cancelled because SparkContext was shut down
-	at org.apache.spark.scheduler.DAGScheduler$$anonfun$cleanUpAfterSchedulerStop$1.apply(DAGScheduler.scala:736)
-	at org.apache.spark.scheduler.DAGScheduler$$anonfun$cleanUpAfterSchedulerStop$1.apply(DAGScheduler.scala:735)
-	at scala.collection.mutable.HashSet.foreach(HashSet.scala:79)
-	at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:735)
-	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:1468)
-	at org.apache.spark.util.EventLoop.stop(EventLoop.scala:84)
-	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:1403)
-	at org.apache.spark.SparkContext.stop(SparkContext.scala:1642)
-	at org.apache.spark.SparkContext$$anonfun$3.apply$mcV$sp(SparkContext.scala:559)
-	at org.apache.spark.util.SparkShutdownHook.run(Utils.scala:2292)
-	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1$$anonfun$apply$mcV$sp$1.apply$mcV$sp(Utils.scala:2262)
-	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1$$anonfun$apply$mcV$sp$1.apply(Utils.scala:2262)
-	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1$$anonfun$apply$mcV$sp$1.apply(Utils.scala:2262)
-	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1772)
-	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1.apply$mcV$sp(Utils.scala:2262)
-	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1.apply(Utils.scala:2262)
-	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1.apply(Utils.scala:2262)
-	at scala.util.Try$.apply(Try.scala:161)
-	at org.apache.spark.util.SparkShutdownHookManager.runAll(Utils.scala:2262)
-	at org.apache.spark.util.SparkShutdownHookManager$$anon$6.run(Utils.scala:2244)
-	at org.apache.hadoop.util.ShutdownHookManager$1.run(ShutdownHookManager.java:54)
-15/06/30 23:11:22 INFO DAGScheduler: ShuffleMapStage 0 (start at Spark.scala:40) failed in 17.620 s
-15/06/30 23:11:22 INFO SparkDeploySchedulerBackend: Shutting down all executors
-15/06/30 23:11:22 INFO SparkDeploySchedulerBackend: Asking each executor to shut down
-15/06/30 23:11:22 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
-15/06/30 23:11:22 INFO Utils: path = /private/var/folders/cq/rjz7hsgn2w3bjqvvpxglsvfh0000gn/T/spark-72b09a51-f959-4312-a811-59cf88e50f6b/blockmgr-fa5271d6-2b34-4072-8835-d39cf039d0dc, already present as root for deletion.
-15/06/30 23:11:22 INFO MemoryStore: MemoryStore cleared
-15/06/30 23:11:22 INFO BlockManager: BlockManager stopped
-15/06/30 23:11:22 INFO BlockManagerMaster: BlockManagerMaster stopped
-15/06/30 23:11:22 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
-15/06/30 23:11:22 INFO SparkContext: Successfully stopped SparkContext
-15/06/30 23:11:22 INFO Utils: Shutdown hook called
-15/06/30 23:11:22 INFO Utils: Deleting directory /private/var/folders/cq/rjz7hsgn2w3bjqvvpxglsvfh0000gn/T/spark-72b09a51-f959-4312-a811-59cf88e50f6b
+15/07/01 01:06:55 INFO JobScheduler: Finished job streaming job 1435709215000 ms.4 from job set of time 1435709215000 ms
+15/07/01 01:06:55 INFO JobScheduler: Total delay: 0.024 s for time 1435709215000 ms (execution: 0.014 s)
+15/07/01 01:06:55 INFO BlockRDD: Removing RDD 22 from persistence list
+15/07/01 01:06:55 INFO BlockManager: Removing RDD 22
+15/07/01 01:06:55 INFO KafkaInputDStream: Removing blocks of RDD BlockRDD[22] at createStream at Spark.scala:31 of time 1435709215000 ms
+15/07/01 01:06:55 INFO MapPartitionsRDD: Removing RDD 23 from persistence list
+15/07/01 01:06:55 INFO BlockManager: Removing RDD 23
+15/07/01 01:06:55 INFO MapPartitionsRDD: Removing RDD 24 from persistence list
+15/07/01 01:06:55 INFO BlockManager: Removing RDD 24
+15/07/01 01:06:55 INFO ReceivedBlockTracker: Deleting batches ArrayBuffer(1435709205000 ms)
+15/07/01 01:06:55 INFO InputInfoTracker: remove old batch metadata: 1435709205000 ms
+^C15/07/01 01:06:56 INFO StreamingContext: Invoking stop(stopGracefully=false) from shutdown hook
+15/07/01 01:06:56 INFO ReceiverTracker: Sent stop signal to all 1 receivers
+15/07/01 01:06:56 ERROR ReceiverTracker: Deregistered receiver for stream 0: Stopped by driver
+15/07/01 01:06:56 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 70) in 37963 ms on 192.168.1.101 (1/1)
+15/07/01 01:06:56 INFO DAGScheduler: ResultStage 2 (start at Spark.scala:40) finished in 37.964 s
+15/07/01 01:06:56 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool
+15/07/01 01:06:56 INFO DAGScheduler: Job 1 finished: start at Spark.scala:40, took 37.988329 s
+15/07/01 01:06:56 INFO ReceiverTracker: All of the receivers have been terminated
+15/07/01 01:06:56 INFO ReceiverTracker: All of the receivers have deregistered successfully
+15/07/01 01:06:56 INFO ReceiverTracker: ReceiverTracker stopped
+15/07/01 01:06:56 INFO JobGenerator: Stopping JobGenerator immediately
+15/07/01 01:06:56 INFO RecurringTimer: Stopped timer for JobGenerator after time 1435709215000
+15/07/01 01:06:56 INFO JobGenerator: Stopped JobGenerator
+15/07/01 01:06:56 INFO JobScheduler: Stopped JobScheduler
+15/07/01 01:06:56 INFO StreamingContext: StreamingContext stopped successfully
+15/07/01 01:06:56 INFO SparkContext: Invoking stop() from shutdown hook
+15/07/01 01:06:56 INFO SparkUI: Stopped Spark web UI at http://192.168.1.101:4040
+15/07/01 01:06:56 INFO DAGScheduler: Stopping DAGScheduler
+15/07/01 01:06:56 INFO SparkDeploySchedulerBackend: Shutting down all executors
+15/07/01 01:06:56 INFO SparkDeploySchedulerBackend: Asking each executor to shut down
+^C15/07/01 01:06:57 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+15/07/01 01:06:57 INFO Utils: path = /private/var/folders/cq/rjz7hsgn2w3bjqvvpxglsvfh0000gn/T/spark-d170c2a6-d8e5-4d62-81d0-333107b7a50b/blockmgr-ecb0d3ca-c6aa-4ead-89eb-a1f47597d52b, already present as root for deletion.
+15/07/01 01:06:57 INFO MemoryStore: MemoryStore cleared
+15/07/01 01:06:57 INFO BlockManager: BlockManager stopped
+15/07/01 01:06:57 INFO BlockManagerMaster: BlockManagerMaster stopped
+15/07/01 01:06:57 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+15/07/01 01:06:57 INFO SparkContext: Successfully stopped SparkContext
+15/07/01 01:06:57 INFO Utils: Shutdown hook called
+15/07/01 01:06:57 INFO Utils: Deleting directory /private/var/folders/cq/rjz7hsgn2w3bjqvvpxglsvfh0000gn/T/spark-d170c2a6-d8e5-4d62-81d0-333107b7a50b
+15/07/01 01:06:57 INFO RemoteActorRefProvider$RemotingTerminator: Shutting down remote daemon.
+^C%
