@@ -3,6 +3,7 @@ package Processing
 import Services.IServices
 import org.apache.spark.streaming.dstream.DStream
 import twitter4j._
+import collection.JavaConversions._
 
 
 class FilterControl[T](process: IProcess[DStream[(T, String)]], service: IServices[T], twitter : Twitter) {
@@ -23,18 +24,21 @@ class FilterControl[T](process: IProcess[DStream[(T, String)]], service: IServic
 
   }
 
-  def findTweetsByTags(tag : String) : List[Status] =
+  def findTweetsByTags(tag : String) : Array[Status] =
   {
     // #ShikakaMusicBox
-    var tweetsByHashtag = List[Status]()
+    val query = new Query(tag)
+    // Max allowed is 100
+    query.setCount(50)
+    query.getSince
+    val qr: QueryResult = twitter.search(query)
+    val tweetsByHashtag = (qr.getTweets: Iterable[Status]).toArray
+    tweetsByHashtag.foreach(status =>{
+      println("---------------------------------- USER "+status.getUser.getScreenName+" subscreveu o servico ShikakaMusicBox!")
+      service.writePlaylist(status.getText);
 
-    val qr: QueryResult = twitter.search(new Query(tag))
-    var i = 0
-    while(i < qr.getTweets.size()){
-      tweetsByHashtag = tweetsByHashtag :+ qr.getTweets.get(i);
-      i = i + 1
-    }
-    tweetsByHashtag.foreach(status => service.writePlaylist(status.getText))
+    })
+
     tweetsByHashtag
   }
 

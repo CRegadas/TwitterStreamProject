@@ -10,7 +10,7 @@ class Redis extends IServices[HashtagEntity] {
 
   override def writeStatus(status : Status) =
   {
-    println("--------------------------------------A GUARDAR USER NO REDIS")
+    println("--------------------------------------A GUARDAR USER "+status.getUser.getScreenName+" NO REDIS")
     redis.sadd(status.getUser.getScreenName, status.getText)
   }
 
@@ -34,7 +34,7 @@ class Redis extends IServices[HashtagEntity] {
     val teste: Array[String] = tweet.split("\\s")
     teste.foreach(s => {
       if(s.startsWith("#P")) list = s.split("#").apply(1)
-      if(s.startsWith("http:")) music = s
+      if((s.startsWith("http:")) || (s.startsWith("spotify:"))) music = s
     })
 
     println("--------------------------------------ADD A Playlist "+list+" A MUSICA : "+music)
