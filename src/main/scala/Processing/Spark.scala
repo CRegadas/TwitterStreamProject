@@ -12,7 +12,7 @@ import twitter4j.HashtagEntity
 class Spark extends IProcess[DStream[(HashtagEntity, String)]] with Logging{
 
   /** Collect all the data **/
-   // val conf = new SparkConf().setAppName("Teste")                       
+  // val conf = new SparkConf().setAppName("Teste")
                                 //.setMaster("spark://macbookarura.lan:7077")                          
                                 //.setJars(Seq("/Users/sindz/MEI/Dissertacao/workspace/diriri/target/scala-2.10/hello-assembly-1.0.jar"))
   val ssc = new StreamingContext(new SparkConf(), Seconds(5))
@@ -27,6 +27,7 @@ class Spark extends IProcess[DStream[(HashtagEntity, String)]] with Logging{
         "zookeeper.connect" -> "localhost:2181",
         "auto.commit.interval.ms" -> "100",
         "auto.commit.enable.reset" -> "true",
+        "auto.offset.reset" -> "smallest",
         "group.id" -> "16666")
       KafkaUtils.createStream[String, Array[Byte], StringDecoder, DefaultDecoder](
         ssc, kafkaParams, topics, StorageLevel.MEMORY_ONLY)
@@ -44,7 +45,7 @@ class Spark extends IProcess[DStream[(HashtagEntity, String)]] with Logging{
 
   override def collect(): DStream[(HashtagEntity, String)] =
   {
-    println("------------------------------------------SPARK_COLLECT")
+    println("------------------------------------------HASHTAGS_COLLECT")
     //var hashtags = List[(String, Int)]()
 
     val teste = init()
@@ -61,6 +62,8 @@ class Spark extends IProcess[DStream[(HashtagEntity, String)]] with Logging{
     return dhtags
 
   }
+
+
 
   override def setStreamingLogLevels() =
   {

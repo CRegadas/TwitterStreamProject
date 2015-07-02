@@ -25,6 +25,25 @@ class Redis extends IServices[HashtagEntity] {
     })
   }
 
+  override def writePlaylist(tweet: String) =
+  {
+    println("--------------------------------------A GUARDAR MUSICA NO REDIS")
+
+    var list = ""
+    var music = ""
+    val teste: Array[String] = tweet.split("\\s")
+    teste.foreach(s => {
+      if(s.startsWith("#P")) list = s.split("#").apply(1)
+      if(s.startsWith("http:")) music = s
+    })
+
+    println("--------------------------------------ADD A Playlist "+list+" A MUSICA : "+music)
+    redis.sadd(list,music)
+
+
+
+  }
+
   override def read() = {}
 
 

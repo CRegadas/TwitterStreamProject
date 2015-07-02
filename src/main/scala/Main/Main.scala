@@ -10,10 +10,8 @@ import java.util.Properties
 import kafka.javaapi.producer.Producer
 import kafka.producer.ProducerConfig
 import org.apache.spark.Logging
-import twitter4j.{HashtagEntity, TwitterStreamFactory}
+import twitter4j._
 import twitter4j.conf.ConfigurationBuilder
-
-
 
 
 object Main extends App with Logging
@@ -29,8 +27,8 @@ object Main extends App with Logging
         .setJSONStoreEnabled(true)
         .build
 
-        //val stream: twitter4j.TwitterStream = new TwitterStreamFactory(config).getInstance()
-        val stream = new MockTwitterStream
+        val stream: twitter4j.TwitterStream = new TwitterStreamFactory(config).getInstance()
+        //val stream = new MockTwitterStream
 
         /** Zookeeper connection properties **/
         val props = new Properties
@@ -46,15 +44,19 @@ object Main extends App with Logging
         println("------------------------------------------MAIN_service kafka")
         val serviceK = new KafkaService(producer,topic)
         val serviceR = new Redis
-        new TwitterStream(stream,serviceK,serviceR)
+        //new TwitterStream(stream,serviceK,serviceR)
 
         /** ask to filter the data **/
         println("------------------------------------------MAIN_filter control")
-        val process = new Spark
-        val filter = new FilterControl[HashtagEntity](process, serviceR)
-        filter.filterByHashTags()
+        val tFactory: Twitter = new TwitterFactory(config).getInstance()
+        val processH = new Spark
+        val filter = new FilterControl[HashtagEntity](processH, serviceR, tFactory)
+        //filter.filterByHashTags()
+        filter.findTweetsByTags("#ShikakaMusicBox").foreach(tweet =>
+                println("-------------------------------------- TWEET BY TAG:  "+tweet.getText))
 
         Thread.sleep(100000)
+
 
 }
 

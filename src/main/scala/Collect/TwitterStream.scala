@@ -4,13 +4,15 @@ import Services.IServices
 import Mock.MockTwitterStream
 import twitter4j._
 
-class TwitterStream(stream : MockTwitterStream, kafkaService: IServices[HashtagEntity], redisService: IServices[HashtagEntity]) {
+class TwitterStream(stream : twitter4j.TwitterStream, kafkaService: IServices[HashtagEntity], redisService: IServices[HashtagEntity]) {
 
   class OnTweetPosted extends StatusListener {
 
-    override def onStatus(status: Status): Unit = {
+    override def onStatus(status: Status): Unit = 
+    {
       println("STATUS: "+status.getText)
       kafkaService.writeStatus(status)
+      /** Save user into redis **/
       redisService.writeStatus(status)
     }
 
